@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DRORI SYSTEMS | הופכים רעיון למוצר עובד שמשקיעים ישמחו לממן</title>
-  <meta name="description" content="סטודיו הנדסה וטכנולוגיה ליזמים ובעלי רעיונות: פיתוח MVP מלא, אפליקציות ומערכות חיות מוכנות להצגה למשקיעים תוך 72 שעות. ללא צורך בידע טכני.">
+  <title>DRORI SYSTEMS | הופכים רעיון למוצר עובד ומחברים אותך למשקיעים</title>
+  <meta name="description" content="סטודיו הנדסה וטכנולוגיה ליזמים: פיתוח MVP מלא תוך 72 שעות, הכנה לדמו וחיבור ישיר לרשת משקיעים ואנג'לים. ללא צורך בידע טכני.">
 
-  <!-- Google Fonts: Heebo (Hebrew), Inter (UI), JetBrains Mono (Specs) -->
+  <!-- Google Fonts: Heebo (Hebrew), Plus Jakarta Sans (UI), JetBrains Mono (Specs) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -22,17 +22,18 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Heebo', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            sans: ['Heebo', 'Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif'],
             mono: ['JetBrains Mono', 'monospace'],
           },
           colors: {
-            obsidian: {
-              DEFAULT: '#000000',
-              deep: '#050505',
-              surface: '#0d0d0e',
-              elevated: '#141416',
-              border: 'rgba(255, 255, 255, 0.09)',
-              borderHover: 'rgba(255, 255, 255, 0.22)',
+            brand: {
+              purple: '#7C3AED',
+              indigo: '#4F46E5',
+              blue: '#2563EB',
+              pink: '#EC4899',
+              emerald: '#10B981',
+              amber: '#F59E0B',
+              coral: '#F43F5E',
             }
           }
         }
@@ -41,209 +42,372 @@
   </script>
 
   <style>
-    /* Monochrome Luxury & Founder-First Styling */
-    :root {
-      color-scheme: dark;
-    }
-
+    /* Vibrant, Joyful, High-Energy Tech Palette */
     body {
-      background-color: #000000;
-      color: #e4e4e7;
+      background-color: #0c0e17;
+      color: #f1f5f9;
       font-feature-settings: "cv01", "ss03";
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Subtle Grid */
-    .bg-grid-subtle {
-      background-size: 32px 32px;
+    /* Ambient Colorful Glows */
+    .glow-purple {
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.22) 0%, rgba(124, 58, 237, 0) 70%);
+    }
+    .glow-blue {
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.22) 0%, rgba(37, 99, 235, 0) 70%);
+    }
+    .glow-pink {
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.18) 0%, rgba(236, 72, 153, 0) 70%);
+    }
+    .glow-emerald {
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0) 70%);
+    }
+
+    /* Grid Texture */
+    .bg-grid-pattern {
+      background-size: 40px 40px;
       background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
     }
 
-    /* Monochromatic Card Panels */
-    .mono-card {
-      background: #09090b;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Modern Vibrant Glass Panels */
+    .glass-card {
+      background: rgba(19, 23, 38, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .mono-card:hover {
-      background: #0f0f12;
-      border-color: rgba(255, 255, 255, 0.22);
-      box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    .glass-card:hover {
+      background: rgba(26, 31, 51, 0.85);
+      border-color: rgba(147, 197, 253, 0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px -8px rgba(99, 102, 241, 0.25);
     }
 
-    /* Metallic Text */
-    .text-metallic {
-      background: linear-gradient(180deg, #ffffff 20%, #a1a1aa 100%);
+    /* Vibrant Gradient Text */
+    .text-gradient-sun {
+      background: linear-gradient(135deg, #FF6B6B 0%, #FFA07A 50%, #FFD93D 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    /* Custom range input */
-    input[type=range] {
-      -webkit-appearance: none;
-      background: rgba(255, 255, 255, 0.12);
-      height: 4px;
-      border-radius: 999px;
-    }
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 18px;
-      width: 18px;
-      border-radius: 50%;
-      background: #ffffff;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
-      border: 2px solid #000000;
+    .text-gradient-cosmic {
+      background: linear-gradient(135deg, #6EE7B7 0%, #3B82F6 50%, #9333EA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    /* Filter buttons */
+    .text-gradient-magic {
+      background: linear-gradient(135deg, #F472B6 0%, #C084FC 50%, #60A5FA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Primary Joyful Button */
+    .btn-joyful {
+      background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+      transition: all 0.2s ease;
+    }
+    .btn-joyful:hover {
+      background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #DB2777 100%);
+      box-shadow: 0 6px 28px rgba(236, 72, 153, 0.5);
+      transform: scale(1.02);
+    }
+
+    .btn-investor {
+      background: linear-gradient(135deg, #059669 0%, #10B981 50%, #34D399 100%);
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-investor:hover {
+      box-shadow: 0 6px 28px rgba(16, 185, 129, 0.55);
+      transform: scale(1.02);
+    }
+
+    /* Active filter tab */
     .filter-btn.active {
-      background: #ffffff !important;
-      color: #000000 !important;
+      background: linear-gradient(135deg, #6366F1, #8B5CF6) !important;
+      color: #ffffff !important;
       font-weight: 700;
-      border-color: #ffffff !important;
+      border-color: transparent !important;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
     }
   </style>
 </head>
-<body class="relative selection:bg-white selection:text-black">
+<body class="relative selection:bg-pink-500 selection:text-white">
 
-  <!-- Architectural Background Grid -->
-  <div class="fixed inset-0 bg-grid-subtle pointer-events-none z-0"></div>
+  <!-- Ambient Glowing Blobs -->
+  <div class="fixed top-0 right-1/4 w-96 h-96 glow-purple rounded-full blur-3xl pointer-events-none z-0"></div>
+  <div class="fixed top-1/3 left-10 w-96 h-96 glow-pink rounded-full blur-3xl pointer-events-none z-0"></div>
+  <div class="fixed bottom-10 right-10 w-[500px] h-[500px] glow-blue rounded-full blur-3xl pointer-events-none z-0"></div>
+  <div class="fixed bottom-1/3 left-1/4 w-96 h-96 glow-emerald rounded-full blur-3xl pointer-events-none z-0"></div>
 
-  <!-- Radial Vignette -->
-  <div class="fixed inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.85)_100%)] pointer-events-none z-0"></div>
+  <!-- Background Grid -->
+  <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
 
-  <!-- Main Container -->
+  <!-- Content Wrapper -->
   <div class="relative z-10 flex flex-col min-h-screen">
 
     <!-- Top Navigation Header -->
     <header class="sticky top-4 z-50 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-      <nav class="bg-zinc-950/80 backdrop-blur-xl border border-white/10 rounded-2xl px-5 py-3.5 flex items-center justify-between shadow-2xl">
+      <nav class="glass-card rounded-2xl px-5 py-3.5 flex items-center justify-between shadow-2xl border-white/15">
+        
         <!-- Logo -->
         <a href="#" class="flex items-center gap-3 group">
-          <div class="w-9 h-9 rounded-xl bg-white flex items-center justify-center text-black font-extrabold shadow-md transition-transform group-hover:scale-105">
-            <i data-lucide="sparkles" class="w-5 h-5 text-black"></i>
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white font-extrabold shadow-lg transition-transform group-hover:scale-105">
+            <i data-lucide="rocket" class="w-5 h-5 text-white"></i>
           </div>
           <div class="text-right">
             <span class="text-base font-extrabold tracking-wider text-white font-mono flex items-center gap-1">
-              DRORI<span class="text-neutral-400">SYSTEMS</span>
+              DRORI<span class="text-pink-400">SYSTEMS</span>
             </span>
-            <span class="block text-[9px] text-neutral-400 font-mono tracking-widest -mt-1">FROM IDEA TO INVESTOR DEMO</span>
+            <span class="block text-[9px] text-indigo-300 font-mono tracking-widest -mt-0.5">IDEA • PRODUCT • INVESTORS</span>
           </div>
         </a>
 
         <!-- Desktop Navigation Links -->
-        <div class="hidden md:flex items-center gap-7 text-xs font-medium tracking-wide text-neutral-300">
-          <a href="#how-it-works" class="hover:text-white transition-colors">איך זה עובד?</a>
-          <a href="#services" class="hover:text-white transition-colors">מה אנחנו בונים?</a>
-          <a href="#projects" class="hover:text-white transition-colors">מוצרים לדוגמה</a>
-          <a href="#investors" class="hover:text-white transition-colors">מוכנות למשקיעים</a>
-          <a href="#calculator" class="hover:text-white transition-colors">מחשבון עלויות</a>
+        <div class="hidden lg:flex items-center gap-6 text-xs font-semibold text-slate-300">
+          <a href="#how-it-works" class="hover:text-pink-400 transition-colors">איך זה עובד?</a>
+          <a href="#services" class="hover:text-indigo-400 transition-colors">מה אנחנו בונים?</a>
+          <a href="#matchmaking" class="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-bold text-white">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>חיבור למשקיעים</span>
+          </a>
+          <a href="#projects" class="hover:text-purple-400 transition-colors">מוצרים לדוגמה</a>
+          <a href="#pricing" class="hover:text-pink-400 transition-colors">חבילות</a>
+          <a href="#calculator" class="hover:text-amber-400 transition-colors">מחשבון עלויות</a>
         </div>
 
-        <!-- Action CTAs -->
+        <!-- Action CTAs: Investor Portal & Founder CTA -->
         <div class="flex items-center gap-3">
-          <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A8%D7%A2%D7%99%D7%95%D7%9F%20%D7%9C%D7%9E%D7%99%D7%96%D7%9D%20%D7%95%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%9E%D7%95%D7%A6%D7%A8%20%D7%A9%D7%90%D7%A4%D7%A9%D7%A8%20%D7%9C%D7%94%D7%A8%D7%90%D7%95%D7%AA%20%D7%9C%D7%9E%D7%A9%D7%A7%D7%99%D7%A2%D7%99%D7%9D" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-neutral-200 text-black font-bold text-xs transition-all shadow-sm">
+          
+          <!-- Investors Portal Entrance Button -->
+          <button onclick="openInvestorModal()" class="px-3.5 py-2 rounded-xl bg-emerald-500/15 border border-emerald-400/30 hover:bg-emerald-500/25 text-emerald-300 font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm">
+            <i data-lucide="key" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <span>כניסה למשקיעים</span>
+          </button>
+
+          <!-- Founder WhatsApp CTA -->
+          <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A8%D7%A2%D7%99%D7%95%D7%9F%20%D7%9C%D7%9E%D7%99%D7%96%D7%9D%20%D7%95%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%9E%D7%95%D7%A6%D7%A8%20%D7%95%D7%9C%D7%9E%D7%A6%D7%95%D7%90%20%D7%9E%D7%A9%D7%A7%D7%99%D7%A2" target="_blank" class="btn-joyful px-4 py-2 rounded-xl text-white font-bold text-xs flex items-center gap-2">
             <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
-            <span>בוא נדבר על הרעיון שלך</span>
+            <span>יש לי רעיון</span>
           </a>
-          <a href="tel:+972549103046" class="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white hover:border-white/30 transition-colors">
-            <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+
+          <!-- Direct Phone Call -->
+          <a href="tel:+972549103046" class="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white hover:border-pink-400 transition-colors">
+            <i data-lucide="phone" class="w-3.5 h-3.5 text-pink-400"></i>
           </a>
         </div>
       </nav>
     </header>
 
-    <!-- Hero Section: Non-Technical Founders First -->
+    <!-- Hero Section: Joyful, Inspiring & Founder-Investor Centric -->
     <section class="pt-20 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center relative">
-      <!-- Status Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/15 bg-white/5 text-neutral-300 text-xs font-mono mb-8 backdrop-blur-md">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>סטודיו הנדסה ליזמים • ללא צורך בידע טכני • מוצר חי להצגה תוך ימים</span>
+      
+      <!-- Sparkle Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-pink-500/30 bg-pink-500/10 text-pink-300 text-xs font-semibold mb-8 backdrop-blur-md shadow-lg shadow-pink-500/10">
+        <i data-lucide="sparkles" class="w-4 h-4 text-pink-400 animate-spin"></i>
+        <span>הופכים רעיונות למוצרים חיים • ומחברים אותך למשקיעים אמיתיים</span>
       </div>
 
       <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.14] mb-6">
-        יש לך רעיון לסטארטאפ? נהפוך אותו למוצר <span class="text-metallic">שמשקיעים ישמחו לממן</span>
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.15] mb-6">
+        יש לך רעיון לסטארטאפ? <br>
+        אנחנו נבנה לך מוצר <span class="text-gradient-sun">ונעזור לך להביא משקיע</span>
       </h1>
 
       <!-- Subtitle -->
-      <p class="text-base sm:text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed mb-10 font-normal">
-        אנחנו מפתחים עבורך מוצר אמיתי, מעוצב ועובד (אפליקציה, מערכת או חומרה) שאפשר <strong class="text-white">להוריד לטלפון, להראות בפרזנטציה ולהרשים משקיעים</strong>. 
-        בלי שתצטרך לדעת לכתוב שורת קוד אחת ובלי לשרוף מאות אלפי שקלים ושנה של פיתוח.
+      <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-10 font-normal">
+        סטודיו הנדסה וטכנולוגיה שמלווה יזמים מא' ועד ת': מפתחים עבורך אפליקציה או מערכת עובדת <strong class="text-white">תוך 72 שעות עד שבועיים</strong>, מכינים אותך לדמו מושלם, <strong class="text-emerald-300">ומחברים את המיזם שלך לרשת המשקיעים והאנג'לים שלנו</strong>.
       </p>
 
-      <!-- CTA Buttons -->
+      <!-- Action Buttons -->
       <div class="flex flex-wrap items-center justify-center gap-4 mb-16">
-        <a href="#calculator" class="px-8 py-4 rounded-xl bg-white hover:bg-neutral-200 text-black font-bold text-sm sm:text-base shadow-xl hover:scale-[1.02] transition-all flex items-center gap-2">
+        <a href="#calculator" class="btn-joyful px-8 py-4 rounded-2xl text-white font-bold text-sm sm:text-base flex items-center gap-2.5">
           <span>חשב עלות וזמן אספקה לרעיון שלך</span>
           <i data-lucide="arrow-left" class="w-4 h-4"></i>
         </a>
-        <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%A7%D7%A6%D7%A8%D7%94%20%D7%A2%D7%9C%20%D7%9E%D7%99%D7%96%D7%9D%20%D7%97%D7%93%D7%A9" target="_blank" class="px-8 py-4 rounded-xl bg-zinc-900 border border-white/10 hover:border-white/30 text-white font-semibold text-sm sm:text-base transition-all flex items-center gap-2">
-          <i data-lucide="message-square" class="w-4 h-4 text-emerald-400"></i>
-          <span>שיחת התייעצות ישירה ללא התחייבות</span>
-        </a>
+        <button onclick="openInvestorModal()" class="btn-investor px-7 py-4 rounded-2xl text-white font-bold text-sm sm:text-base flex items-center gap-2.5">
+          <i data-lucide="briefcase" class="w-4 h-4"></i>
+          <span>הצטרפות כמשקיע / אנג'ל</span>
+        </button>
       </div>
 
-      <!-- 4 Pillars for Founders -->
+      <!-- 4 Value Highlights Cards -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
-        <div class="mono-card p-5 rounded-2xl text-right">
+        <div class="glass-card p-5 rounded-2xl text-right border-indigo-500/20">
+          <div class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center mb-3">
+            <i data-lucide="zap" class="w-4 h-4 text-indigo-400"></i>
+          </div>
           <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">72h-14d</div>
-          <div class="text-xs text-neutral-400 mt-1">מרעיון על הנייר למוצר חי ומוכח</div>
+          <div class="text-xs text-slate-300 mt-1">מרעיון על הנייר למוצר חי ומוכח</div>
         </div>
-        <div class="mono-card p-5 rounded-2xl text-right">
+
+        <div class="glass-card p-5 rounded-2xl text-right border-pink-500/20">
+          <div class="w-8 h-8 rounded-lg bg-pink-500/20 flex items-center justify-center mb-3">
+            <i data-lucide="heart-handshake" class="w-4 h-4 text-pink-400"></i>
+          </div>
           <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">0% Tech</div>
-          <div class="text-xs text-neutral-400 mt-1">אתה מביא את החזון — אנחנו דואגים להכל</div>
+          <div class="text-xs text-slate-300 mt-1">אתה מביא את החזון — אנחנו דואגים להכל</div>
         </div>
-        <div class="mono-card p-5 rounded-2xl text-right">
+
+        <div class="glass-card p-5 rounded-2xl text-right border-emerald-500/20">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center mb-3">
+            <i data-lucide="trending-up" class="w-4 h-4 text-emerald-400"></i>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">Matchmaking</div>
+          <div class="text-xs text-slate-300 mt-1">חיבור אקטיבי למשקיעים וקרנות Seed</div>
+        </div>
+
+        <div class="glass-card p-5 rounded-2xl text-right border-amber-500/20">
+          <div class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center mb-3">
+            <i data-lucide="shield-check" class="w-4 h-4 text-amber-400"></i>
+          </div>
           <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">100% IP</div>
-          <div class="text-xs text-neutral-400 mt-1">כל הקוד, המערכת והזכויות שייכים לך</div>
-        </div>
-        <div class="mono-card p-5 rounded-2xl text-right">
-          <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">Investor Ready</div>
-          <div class="text-xs text-neutral-400 mt-1">מוצר מושלם להדגמה מול אנג'לים וקרנות</div>
+          <div class="text-xs text-slate-300 mt-1">כל הקוד, המערכת והזכויות שייכים לך</div>
         </div>
       </div>
     </section>
 
-    <!-- How It Works (Simple 3-Step Process for Non-Technical Clients) -->
-    <section id="how-it-works" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+    <!-- NEW FEATURE: Investor Matchmaking Section -->
+    <section id="matchmaking" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="glass-card rounded-3xl p-8 sm:p-14 border-emerald-500/30 relative overflow-hidden bg-gradient-to-br from-slate-900/90 via-slate-900/70 to-emerald-950/40 shadow-2xl">
+        <div class="absolute -right-20 -top-20 w-80 h-80 glow-emerald rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Text Content -->
+          <div class="lg:col-span-7 text-right">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-bold rounded-full mb-4">
+              <i data-lucide="users" class="w-4 h-4 text-emerald-400"></i>
+              <span>רשת השידוכים והחיבורים למשקיעים</span>
+            </div>
+            
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+              אנחנו לא רק בונים את המוצר — <br>
+              <span class="text-gradient-cosmic">אנחנו מחברים אותך למשקיעים אמיתיים</span>
+            </h2>
+
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+              משקיעים, אנג'לים וקרנות הון סיכון עייפים מלהשקיע ברעיונות על הנייר. כשהם מקבלים מאיתנו מיזם עם <strong class="text-white">מוצר עובד, אפליקציה פעילה וטכנולוגיה יציבה</strong> — הם פותחים את הדלת ברצון.
+            </p>
+
+            <div class="space-y-3 mb-8">
+              <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-200">
+                <div class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">✓</div>
+                <span><strong>הצגה מול רשת אנג'לים:</strong> חשיפת המיזם לרשת המשקיעים העצמאיים והשותפים שלנו.</span>
+              </div>
+              <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-200">
+                <div class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">✓</div>
+                <span><strong>הכנה לפרזנטציית דמו:</strong> בניית תרחיש שימוש מושלם שמציג את הערך תוך 60 שניות.</span>
+              </div>
+              <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-200">
+                <div class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">✓</div>
+                <span><strong>גב טכנולוגי בפגישה:</strong> אפשרות לליווי טכנולוגי אישי מול המשקיע כדי לענות על כל שאלה.</span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-4">
+              <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%9E%D7%99%D7%96%D7%9D%20%D7%95%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%9E%D7%95%D7%A6%D7%A8%20%D7%95%D7%9C%D7%94%D7%AA%D7%97%D7%91%D7%A8%20%D7%9C%D7%9E%D7%A9%D7%A7%D7%99%D7%A2%D7%99%D7%9D" target="_blank" class="btn-joyful px-6 py-3.5 rounded-xl text-white font-bold text-xs sm:text-sm flex items-center gap-2">
+                <span>רוצה שנבנה מוצר ונחבר למשקיע</span>
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              </a>
+              <button onclick="openInvestorModal()" class="px-6 py-3.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 border border-emerald-500/30 text-emerald-300 font-bold text-xs sm:text-sm transition-all flex items-center gap-2">
+                <i data-lucide="key" class="w-4 h-4 text-emerald-400"></i>
+                <span>אני משקיע / אנג'ל – הרשמה לרשת</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Visual Investor Card / Dealflow Badge -->
+          <div class="lg:col-span-5">
+            <div class="glass-card rounded-2xl p-6 border-emerald-400/30 bg-slate-950/80 shadow-xl">
+              <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+                <div class="flex items-center gap-2">
+                  <div class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></div>
+                  <span class="text-xs font-mono text-emerald-400 font-bold">LIVE DEALFLOW QUEUE</span>
+                </div>
+                <span class="text-[11px] font-mono text-slate-400">Q3-Q4 2026</span>
+              </div>
+
+              <div class="space-y-3">
+                <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between">
+                  <div class="text-right">
+                    <div class="text-xs font-bold text-white">מיזם AI למסחר אוטומטי</div>
+                    <div class="text-[10px] text-slate-400">MVP מוכן • מחפש Seed ₪500k</div>
+                  </div>
+                  <span class="px-2 py-1 bg-emerald-500/20 text-emerald-300 text-[10px] font-bold rounded-md">מוכן להדגמה</span>
+                </div>
+
+                <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between">
+                  <div class="text-right">
+                    <div class="text-xs font-bold text-white">אפליקציית מדיטציה ומנויים</div>
+                    <div class="text-[10px] text-slate-400">חי בחנויות • יעד גיוס $150k</div>
+                  </div>
+                  <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-[10px] font-bold rounded-md">באוויר</span>
+                </div>
+
+                <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between">
+                  <div class="text-right">
+                    <div class="text-xs font-bold text-white">IoT קירור חכם ומערכות שרת</div>
+                    <div class="text-[10px] text-slate-400">פרוטוטייפ תעשייתי עובד</div>
+                  </div>
+                  <span class="px-2 py-1 bg-purple-500/20 text-purple-300 text-[10px] font-bold rounded-md">חומרה עובדת</span>
+                </div>
+              </div>
+
+              <div class="mt-5 pt-3 border-t border-slate-800 text-center">
+                <button onclick="openInvestorModal()" class="text-xs text-emerald-300 hover:text-emerald-200 font-bold flex items-center justify-center gap-1.5 w-full">
+                  <span>לחץ לקבלת גישה למיזמים הבאים ברשת</span>
+                  <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works (Simple 3-Step Process) -->
+    <section id="how-it-works" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div class="text-center max-w-3xl mx-auto mb-14">
-        <div class="text-xs font-mono text-neutral-400 tracking-widest uppercase mb-2">The Process</div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">איך אנחנו הופכים רעיון למוצר תוך ימים?</h2>
-        <p class="text-sm text-neutral-400 mt-3">תהליך מובנה, שקוף ופשוט שמסיר ממך את כל כאב הראש הטכנולוגי.</p>
+        <div class="text-xs font-mono text-pink-400 tracking-widest uppercase mb-2">The Process</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">איך אנחנו מביאים אותך למשקיע תוך ימים?</h2>
+        <p class="text-sm text-slate-300 mt-3">מסלול ברור ומובנה שהופך רעיון מופשט לנכס עסקי חי ומבוקש.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Step 1 -->
-        <div class="mono-card p-8 rounded-3xl relative">
-          <div class="text-xs font-mono text-neutral-400 mb-4">שלב 01</div>
-          <h3 class="text-xl font-bold text-white mb-3">שיחת אפיון וזיקוק החזון</h3>
-          <p class="text-xs text-neutral-400 leading-relaxed">
-            אתה מספר לנו על הרעיון והקהל שלך. אנחנו מזקקים את התכונות הקריטיות (Core Value) שיגרמו למשתמשים ולמשקיעים להגיד "וואו" בדקה הראשונה.
+        <div class="glass-card p-8 rounded-3xl relative border-indigo-500/20">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold mb-4 font-mono">01</div>
+          <h3 class="text-xl font-bold text-white mb-3">אפיון וזיקוק ערך המיזם</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            אתה מספר לנו על הרעיון שלך. אנחנו מזקקים את התכונות הקריטיות (Core Value) שיגרמו למשתמשים ולמשקיעים להגיד "וואו" בדקה הראשונה.
           </p>
         </div>
 
         <!-- Step 2 -->
-        <div class="mono-card p-8 rounded-3xl relative border-white/20">
-          <div class="text-xs font-mono text-neutral-400 mb-4">שלב 02</div>
+        <div class="glass-card p-8 rounded-3xl relative border-purple-500/30">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 font-bold mb-4 font-mono">02</div>
           <h3 class="text-xl font-bold text-white mb-3">פיתוח מואץ בעזרת סוכני AI</h3>
-          <p class="text-xs text-neutral-400 leading-relaxed">
-            אנחנו משלבים 40 שנות הנדסת מערכות עם כלי AI אוטונומיים. מה שלוקח לבתי תוכנה מסורתיים 6 חודשים — אנחנו בונים עבורך בימים ספורים.
+          <p class="text-xs text-slate-300 leading-relaxed">
+            אנחנו רותמים 40 שנות הנדסה וסוכני AI אוטונומיים. מה שלוקח לבתי תוכנה 6 חודשים — אנחנו בונים בימים בודדים ובשבריר מהעלות.
           </p>
         </div>
 
         <!-- Step 3 -->
-        <div class="mono-card p-8 rounded-3xl relative">
-          <div class="text-xs font-mono text-neutral-400 mb-4">שלב 03</div>
-          <h3 class="text-xl font-bold text-white mb-3">דמו חי ומוכן לגיוס השקעה</h3>
-          <p class="text-xs text-neutral-400 leading-relaxed">
-            אתה מקבל מוצר פעיל שמותקן בטלפון או פועל בדומיין חי, מחובר לשרתים מאובטחים, עם עיצוב ברמת פרימיום — מוכן להצגה מיידית למשקיעים.
+        <div class="glass-card p-8 rounded-3xl relative border-emerald-500/30">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold mb-4 font-mono">03</div>
+          <h3 class="text-xl font-bold text-white mb-3">דמו חי וחיבור למשקיעים</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            אתה מקבל מוצר פעיל בטלפון או בדומיין חי, ופותח איתנו דלתות למשקיעים ואנג'לים שרוצים להשקיע במוצרים מוכחים.
           </p>
         </div>
       </div>
@@ -252,110 +416,82 @@
     <!-- Services / Solutions for Founders -->
     <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="text-xs font-mono text-neutral-400 tracking-widest uppercase mb-2">What We Build For You</div>
+        <div class="text-xs font-mono text-purple-400 tracking-widest uppercase mb-2">What We Build For You</div>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-white">כל מה שצריך כדי להרים מיזם טכנולוגי</h2>
-        <p class="text-sm text-neutral-400 mt-3">פתרון טכנולוגי מקצה לקצה — אתה לא צריך לחפש מעצבים, מתכנתים, אנשי שרתים או מומחי חומרה בנפרד.</p>
+        <p class="text-sm text-slate-300 mt-3">פתרון הנדסי וטכנולוגי מקצה לקצה — כל הידע והכלים תחת קורת גג אחת.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Solution 1: Investor Demo Apps -->
-        <div class="mono-card p-7 rounded-3xl group">
-          <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-white group-hover:bg-white group-hover:text-black transition-colors">
-            <i data-lucide="smartphone" class="w-5 h-5"></i>
+        <!-- Solution 1: Mobile Apps -->
+        <div class="glass-card p-7 rounded-3xl group border-indigo-500/20 hover:border-indigo-400">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-indigo-600 to-blue-500 flex items-center justify-center mb-5 text-white shadow-md">
+            <i data-lucide="smartphone" class="w-6 h-6"></i>
           </div>
           <h3 class="text-lg font-bold text-white mb-2.5">אפליקציות מובייל (iOS & Android)</h3>
-          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
-            אפליקציות שנראות ומרגישות כמו החברות הגדולות בעולם. כולל ממשק משתמש מהודק, עדכוני תוכן בזמן אמת ומנגנון גביית תשלומים ומנויים.
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            אפליקציות מודרניות שנראות מדהים, כולל ממשק משתמש אינטראקטיבי, עדכוני תוכן חיים ללא צורך בהעלאת גרסה לחנות, וסליקת מנויים ותשלומים.
           </p>
-          <div class="text-[11px] font-mono text-neutral-300">מתאים ל: מיזמי תוכן, רשתות חברתיות, B2C, מנויים</div>
+          <div class="text-[11px] font-mono text-indigo-300">מתאים ל: מיזמי B2C, מנויים, תוכן, קהילות</div>
         </div>
 
         <!-- Solution 2: Fractional CTO & Linux Infrastructure -->
-        <div class="mono-card p-7 rounded-3xl group border-white/20">
-          <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-white group-hover:bg-white group-hover:text-black transition-colors">
-            <i data-lucide="shield-check" class="w-5 h-5"></i>
+        <div class="glass-card p-7 rounded-3xl group border-emerald-500/20 hover:border-emerald-400">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center mb-5 text-white shadow-md">
+            <i data-lucide="shield-check" class="w-6 h-6"></i>
           </div>
           <h3 class="text-lg font-bold text-white mb-2.5">ה-CTO השקט שלך & שרתי לינוקס</h3>
-          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
-            מעל 25 שנות ניסיון בהקמת שרתי Linux מאובטחים, תשתיות ענן ורשתות סגורות. אנחנו מוודאים שהמוצר עומד בעומסים ולא קורס מול משקיעים.
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            מעל 25 שנות מומחיות בהקמת שרתי Linux מאובטחים, רשתות וירטואליות ותשתיות ענן שלא קורסות מול משקיעים ומחזיקות אלפי משתמשים.
           </p>
-          <div class="text-[11px] font-mono text-neutral-300">מתאים ל: יזמים שצריכים גב טכנולוגי בכיר ובטוח</div>
+          <div class="text-[11px] font-mono text-emerald-300">מתאים ל: יזמים שצריכים גב טכנולוגי יציב</div>
         </div>
 
         <!-- Solution 3: AI Agents & Business Automation -->
-        <div class="mono-card p-7 rounded-3xl group">
-          <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-white group-hover:bg-white group-hover:text-black transition-colors">
-            <i data-lucide="bot" class="w-5 h-5"></i>
+        <div class="glass-card p-7 rounded-3xl group border-pink-500/20 hover:border-pink-400">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-pink-600 to-rose-500 flex items-center justify-center mb-5 text-white shadow-md">
+            <i data-lucide="bot" class="w-6 h-6"></i>
           </div>
           <h3 class="text-lg font-bold text-white mb-2.5">סוכני AI & אוטומציה חכמה</h3>
-          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
-            שילוב מודלי שפה (LLMs), צ'אטבוטים לוואטסאפ ובוטים אוטונומיים שמבצעים משימות מורכבות, ניהול לידים ושירות לקוחות 24/7.
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            שילוב מודלי שפה (LLMs), בוטים חכמים לוואטסאפ וסוכני בינה מלאכותית שמבצעים משימות מורכבות, ניהול לידים ושירות לקוחות אוטומטי 24/7.
           </p>
-          <div class="text-[11px] font-mono text-neutral-300">מתאים ל: מיזמי AI, אוטומציית מכירות, שירות חכם</div>
+          <div class="text-[11px] font-mono text-pink-300">מתאים ל: מיזמי AI, אוטומציית מכירות, שירות לקוחות</div>
         </div>
 
-        <!-- Solution 4: Hardware, IoT & Industrial Devices -->
-        <div class="mono-card p-7 rounded-3xl group">
-          <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-white group-hover:bg-white group-hover:text-black transition-colors">
-            <i data-lucide="cpu" class="w-5 h-5"></i>
+        <!-- Solution 4: Hardware & IoT -->
+        <div class="glass-card p-7 rounded-3xl group border-amber-500/20 hover:border-amber-400">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-amber-600 to-orange-500 flex items-center justify-center mb-5 text-white shadow-md">
+            <i data-lucide="cpu" class="w-6 h-6"></i>
           </div>
           <h3 class="text-lg font-bold text-white mb-2.5">חומרה, IoT ומכשירים חכמים</h3>
-          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
-            פיתוח מוצרי חומרה פיזיים, כרטיסים אלקטרוניים, חיישנים וחיבורם לענן ולאפליקציה (משלב הפרוטוטייפ הראשוני ועד למוצר תעשייתי).
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            פיתוח מוצרי חומרה פיזיים, בקרים אלקטרוניים, חיישנים וחיבור ישיר לאפליקציה ולענן — מפרוטוטייפ מהיר ועד מוצר תעשייתי סדרתי.
           </p>
-          <div class="text-[11px] font-mono text-neutral-300">מתאים ל: מכשור רפואי, בתים חכמים, IoT, תעשייה</div>
+          <div class="text-[11px] font-mono text-amber-300">מתאים ל: מכשור רפואי, בתים חכמים, IoT, תעשייה</div>
         </div>
 
-        <!-- Solution 5: Remote Systems & Desktop Utilities -->
-        <div class="mono-card p-7 rounded-3xl group">
-          <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-white group-hover:bg-white group-hover:text-black transition-colors">
-            <i data-lucide="monitor" class="w-5 h-5"></i>
+        <!-- Solution 5: Remote Screen & Desktop Utilities -->
+        <div class="glass-card p-7 rounded-3xl group border-cyan-500/20 hover:border-cyan-400">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-500 flex items-center justify-center mb-5 text-white shadow-md">
+            <i data-lucide="monitor" class="w-6 h-6"></i>
           </div>
           <h3 class="text-lg font-bold text-white mb-2.5">שליטה מרחוק וכלי מערכת</h3>
-          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
-            מערכות שיקוף מסכים עם יכולת סיבוב בזמן אמת, כלי שחזור חלונות וסשנים, ופתרונות עבודה מבוזרים לחברות וארגונים.
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            מערכות שיקוף ושליטה במסכים עם יכולת סיבוב אוריינטציה בזמן אמת, כלי שחזור חלונות וסביבות עבודה מרובות מסכים.
           </p>
-          <div class="text-[11px] font-mono text-neutral-300">מתאים ל: חברות תוכנה, עבודה מרחוק, מערכות תצוגה</div>
+          <div class="text-[11px] font-mono text-cyan-300">מתאים ל: חברות תוכנה, עבודה מבוזרת, תצוגות דיגיטליות</div>
         </div>
 
-        <!-- Solution 6: Live Media & Audio/Video Streams -->
-        <div class="mono-card p-7 rounded-3xl group">
-          <div class="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-white group-hover:bg-white group-hover:text-black transition-colors">
-            <i data-lucide="radio" class="w-5 h-5"></i>
+        <!-- Solution 6: Live Media & Streams -->
+        <div class="glass-card p-7 rounded-3xl group border-purple-500/20 hover:border-purple-400">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center mb-5 text-white shadow-md">
+            <i data-lucide="radio" class="w-6 h-6"></i>
           </div>
           <h3 class="text-lg font-bold text-white mb-2.5">מדיה, שידורים חיים ורדיו</h3>
-          <p class="text-xs text-neutral-400 leading-relaxed mb-4">
-            תחנות רדיו וטלוויזיה דיגיטליות, נגני שידור חי, סנכרון לוחות שידורים ומנועי הגייה ופונטיקה מתקדמים.
+          <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            תחנות רדיו וטלוויזיה דיגיטליות, נגני שידור חי, סנכרון לוחות שידורים ומנועי הגייה ופונטיקה קולית מתקדמת.
           </p>
-          <div class="text-[11px] font-mono text-neutral-300">מתאים ל: גופי תקשורת, קהילות, תחנות שידור</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Investor Matchmaking / Future Vision Callout -->
-    <section id="investors" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="mono-card rounded-3xl p-8 sm:p-12 border-white/20 relative overflow-hidden bg-gradient-to-b from-zinc-900/50 to-black">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div class="max-w-2xl text-right">
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 border border-white/15 text-white text-xs font-mono rounded-full mb-4">
-              <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
-              <span>INVESTOR READINESS & MATCHMAKING</span>
-            </div>
-            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">משקיעים לא קונים מצגות — הם משקיעים במוצר עובד</h3>
-            <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-              כשאתה מגיע לפגישת משקיעים ומניח על השולחן טלפון עם אפליקציה חיה ופעילה, סיכויי הגיוס שלך קופצים במאות אחוזים. אנחנו מכינים אותך בדיוק לזה.
-            </p>
-            <div class="mt-4 text-xs font-semibold text-neutral-300 flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              <span>בקרוב: פלטפורמת שידוכים וחיבורים ישירים בין מיזמים מוכחים שפותחו אצלנו לבין משקיעים ואנג'לים.</span>
-            </div>
-          </div>
-          <div class="shrink-0">
-            <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A2%D7%94%20%D7%9C%D7%94%D7%9B%D7%99%D7%9F%20%D7%9E%D7%95%D7%A6%D7%A8%20%D7%9C%D7%94%D7%A6%D7%92%D7%94%20%D7%9E%D7%95%D7%9C%20%D7%9E%D7%A9%D7%A7%D7%99%D7%A2%D7%99%D7%9D" target="_blank" class="px-6 py-3.5 rounded-xl bg-white hover:bg-neutral-200 text-black font-bold text-xs transition-all shadow-lg flex items-center gap-2">
-              <span>הכן את המיזם שלך להשקעה</span>
-              <i data-lucide="arrow-left" class="w-4 h-4"></i>
-            </a>
-          </div>
+          <div class="text-[11px] font-mono text-purple-300">מתאים ל: גופי תקשורת, קהילות, תחנות שידור</div>
         </div>
       </div>
     </section>
@@ -364,18 +500,18 @@
     <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
         <div>
-          <div class="text-xs font-mono text-neutral-400 tracking-widest uppercase mb-2">Track Record</div>
+          <div class="text-xs font-mono text-pink-400 tracking-widest uppercase mb-2">Track Record</div>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-white">מוצרים ומערכות שפיתחנו בהצלחה</h2>
-          <p class="text-xs sm:text-sm text-neutral-400 mt-2">מערכות אמיתיות הפועלות בייצור, מול לקוחות, ארגונים ובחנויות האפליקציות.</p>
+          <p class="text-xs sm:text-sm text-slate-300 mt-2">מערכות חיות הפועלות בייצור מול לקוחות, ארגונים ובחנויות האפליקציות.</p>
         </div>
         
         <!-- Filter Tabs -->
         <div class="flex flex-wrap gap-2 mt-6 md:mt-0" id="filter-container">
-          <button class="filter-btn active px-3.5 py-1.5 rounded-xl text-xs font-mono border border-white/10 bg-zinc-900 text-neutral-400 hover:text-white transition-all" data-filter="all">הכל</button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-mono border border-white/10 bg-zinc-900 text-neutral-400 hover:text-white transition-all" data-filter="mobile">אפליקציות מובייל</button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-mono border border-white/10 bg-zinc-900 text-neutral-400 hover:text-white transition-all" data-filter="linux">שרתי לינוקס & כלים</button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-mono border border-white/10 bg-zinc-900 text-neutral-400 hover:text-white transition-all" data-filter="hardware">חומרה & IoT</button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-mono border border-white/10 bg-zinc-900 text-neutral-400 hover:text-white transition-all" data-filter="ai">סוכני AI & מדיה</button>
+          <button class="filter-btn active px-3.5 py-1.5 rounded-xl text-xs font-mono border border-slate-700 bg-slate-800 text-slate-300 hover:text-white transition-all" data-filter="all">הכל</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-mono border border-slate-700 bg-slate-800 text-slate-300 hover:text-white transition-all" data-filter="mobile">אפליקציות מובייל</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-mono border border-slate-700 bg-slate-800 text-slate-300 hover:text-white transition-all" data-filter="linux">שרתי לינוקס & כלים</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-mono border border-slate-700 bg-slate-800 text-slate-300 hover:text-white transition-all" data-filter="hardware">חומרה & IoT</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-xl text-xs font-mono border border-slate-700 bg-slate-800 text-slate-300 hover:text-white transition-all" data-filter="ai">סוכני AI & מדיה</button>
         </div>
       </div>
 
@@ -383,218 +519,182 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
         
         <!-- Project 1: Tefila Meditation -->
-        <div class="mono-card rounded-3xl p-6 flex flex-col justify-between project-card" data-category="mobile">
+        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between project-card border-indigo-500/20" data-category="mobile">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-neutral-300 text-[11px] font-mono rounded-full">Mobile App & Cloud</span>
-              <i data-lucide="smartphone" class="w-4 h-4 text-neutral-400"></i>
+              <span class="px-2.5 py-1 bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-[11px] font-mono rounded-full">Mobile App & Cloud</span>
+              <i data-lucide="smartphone" class="w-4 h-4 text-indigo-400"></i>
             </div>
             <h4 class="text-base font-bold text-white mb-2">Tefila Meditation & OTA Content</h4>
-            <p class="text-xs text-neutral-400 mb-4 leading-relaxed">
+            <p class="text-xs text-slate-300 mb-4 leading-relaxed">
               אפליקציית מובייל אינטראקטיבית ב-Google Play הכוללת ממשק הגהה מקוון ועדכוני תוכן חיים ללא צורך בהעלאת גרסה לחנות.
             </p>
           </div>
-          <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-            <div class="text-[11px] font-mono text-neutral-400">מובייל • ענן • סנכרון חי</div>
-            <span class="text-xs text-white font-medium">Google Play Beta</span>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <div class="text-[11px] font-mono text-slate-400">מובייל • ענן • סנכרון חי</div>
+            <span class="text-xs text-indigo-300 font-semibold">Google Play Beta</span>
           </div>
         </div>
 
         <!-- Project 2: Bruker X-Ray -->
-        <div class="mono-card rounded-3xl p-6 flex flex-col justify-between project-card" data-category="hardware">
+        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between project-card border-amber-500/20" data-category="hardware">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-neutral-300 text-[11px] font-mono rounded-full">Industrial & Semiconductor</span>
-              <i data-lucide="cpu" class="w-4 h-4 text-neutral-400"></i>
+              <span class="px-2.5 py-1 bg-amber-500/20 border border-amber-400/30 text-amber-300 text-[11px] font-mono rounded-full">Industrial & Semiconductor</span>
+              <i data-lucide="cpu" class="w-4 h-4 text-amber-400"></i>
             </div>
             <h4 class="text-base font-bold text-white mb-2">Bruker X-Ray Inspection System</h4>
-            <p class="text-xs text-neutral-400 mb-4 leading-relaxed">
+            <p class="text-xs text-slate-300 mb-4 leading-relaxed">
               פיתוח מערכות בקרה מתקדמות למכשירי רנטגן לבדיקת שבבים וסיליקון בקווי ייצור של ענקיות הטכנולוגיה העולמיות.
             </p>
           </div>
-          <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-            <div class="text-[11px] font-mono text-neutral-400">חומרה • בדיקות רנטגן • תעשייה</div>
-            <span class="text-xs text-white font-medium">Enterprise Grade</span>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <div class="text-[11px] font-mono text-slate-400">חומרה • בדיקות רנטגן • תעשייה</div>
+            <span class="text-xs text-amber-300 font-semibold">Enterprise Grade</span>
           </div>
         </div>
 
         <!-- Project 3: Tehillim App -->
-        <div class="mono-card rounded-3xl p-6 flex flex-col justify-between project-card" data-category="mobile">
+        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between project-card border-purple-500/20" data-category="mobile">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-neutral-300 text-[11px] font-mono rounded-full">Monetization & Audio</span>
-              <i data-lucide="book-open" class="w-4 h-4 text-neutral-400"></i>
+              <span class="px-2.5 py-1 bg-purple-500/20 border border-purple-400/30 text-purple-300 text-[11px] font-mono rounded-full">Monetization & Audio</span>
+              <i data-lucide="book-open" class="w-4 h-4 text-purple-400"></i>
             </div>
             <h4 class="text-base font-bold text-white mb-2">Tehillim App & In-App Purchases</h4>
-            <p class="text-xs text-neutral-400 mb-4 leading-relaxed">
+            <p class="text-xs text-slate-300 mb-4 leading-relaxed">
               אפליקציה חיה עם מודל מונטיזציה, רכישות מנויים ב-Google Play, מנוע הגייה ייחודי ושרת הקדשות ציבורי בזמן אמת.
             </p>
           </div>
-          <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-            <div class="text-[11px] font-mono text-neutral-400">סליקה • מנויים • הגייה קולית</div>
-            <span class="text-xs text-white font-medium">Production App</span>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <div class="text-[11px] font-mono text-slate-400">סליקה • מנויים • הגייה קולית</div>
+            <span class="text-xs text-purple-300 font-semibold">Production App</span>
           </div>
         </div>
 
         <!-- Project 4: Remote Screen -->
-        <div class="mono-card rounded-3xl p-6 flex flex-col justify-between project-card border-white/20" data-category="linux">
+        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between project-card border-cyan-500/30" data-category="linux">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-neutral-300 text-[11px] font-mono rounded-full">Remote Control & Video</span>
-              <i data-lucide="monitor" class="w-4 h-4 text-neutral-400"></i>
+              <span class="px-2.5 py-1 bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 text-[11px] font-mono rounded-full">Remote Control & Video</span>
+              <i data-lucide="monitor" class="w-4 h-4 text-cyan-400"></i>
             </div>
             <h4 class="text-base font-bold text-white mb-2">Remote Screen with Live Rotation</h4>
-            <p class="text-xs text-neutral-400 mb-4 leading-relaxed">
+            <p class="text-xs text-slate-300 mb-4 leading-relaxed">
               תוכנת שליטה ושיקוף מסכים מרחוק עם יכולת סיבוב אוריינטציה של התצוגה בזמן אמת, אופטימיזציית רוחב פס ומהירות שיא.
             </p>
           </div>
-          <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-            <div class="text-[11px] font-mono text-neutral-400">Linux • שליטה מרחוק • שיקוף</div>
-            <a href="https://github.com/yacovdroridev/remote_screen_with_rotatation" target="_blank" class="text-xs text-white hover:underline flex items-center gap-1 font-bold">GitHub <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <div class="text-[11px] font-mono text-slate-400">Linux • שליטה מרחוק • שיקוף</div>
+            <a href="https://github.com/yacovdroridev/remote_screen_with_rotatation" target="_blank" class="text-xs text-cyan-300 hover:underline flex items-center gap-1 font-bold">GitHub <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
           </div>
         </div>
 
         <!-- Project 5: WindowRecovery -->
-        <div class="mono-card rounded-3xl p-6 flex flex-col justify-between project-card" data-category="linux">
+        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between project-card border-blue-500/20" data-category="linux">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-neutral-300 text-[11px] font-mono rounded-full">Productivity & Recovery</span>
-              <i data-lucide="layout" class="w-4 h-4 text-neutral-400"></i>
+              <span class="px-2.5 py-1 bg-blue-500/20 border border-blue-400/30 text-blue-300 text-[11px] font-mono rounded-full">Productivity & Recovery</span>
+              <i data-lucide="layout" class="w-4 h-4 text-blue-400"></i>
             </div>
             <h4 class="text-base font-bold text-white mb-2">Window Recovery & Chrome Guardian</h4>
-            <p class="text-xs text-neutral-400 mb-4 leading-relaxed">
+            <p class="text-xs text-slate-300 mb-4 leading-relaxed">
               כלי אוטומציה לשמירה ושחזור מדויק של חלונות ומצבי עבודה מרובי מסכים, למניעת אובדן מידע וסביבות עבודה בקריסות.
             </p>
           </div>
-          <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-            <div class="text-[11px] font-mono text-neutral-400">אוטומציה • שחזור מידע • Desktop</div>
-            <a href="https://github.com/yacovdroridev/windowRecovery" target="_blank" class="text-xs text-white hover:underline flex items-center gap-1 font-bold">GitHub <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <div class="text-[11px] font-mono text-slate-400">אוטומציה • שחזור מידע • Desktop</div>
+            <a href="https://github.com/yacovdroridev/windowRecovery" target="_blank" class="text-xs text-blue-300 hover:underline flex items-center gap-1 font-bold">GitHub <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
           </div>
         </div>
 
         <!-- Project 6: AI Marketing Automation -->
-        <div class="mono-card rounded-3xl p-6 flex flex-col justify-between project-card" data-category="ai">
+        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between project-card border-pink-500/20" data-category="ai">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-neutral-300 text-[11px] font-mono rounded-full">AI & Sales Bot</span>
-              <i data-lucide="zap" class="w-4 h-4 text-neutral-400"></i>
+              <span class="px-2.5 py-1 bg-pink-500/20 border border-pink-400/30 text-pink-300 text-[11px] font-mono rounded-full">AI & Sales Bot</span>
+              <i data-lucide="zap" class="w-4 h-4 text-pink-400"></i>
             </div>
             <h4 class="text-base font-bold text-white mb-2">AI Marketing & WhatsApp Suite</h4>
-            <p class="text-xs text-neutral-400 mb-4 leading-relaxed">
+            <p class="text-xs text-slate-300 mb-4 leading-relaxed">
               מערכת ניהול לידים אוטומטית המשלבת בינה מלאכותית מקומית לקמפיינים מותאמים אישית ומענה אוטומטי בוואטסאפ.
             </p>
           </div>
-          <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-            <div class="text-[11px] font-mono text-neutral-400">סוכני AI • בוט מכירות • WhatsApp</div>
-            <span class="text-xs text-white font-medium">Production Ready</span>
-          </div>
-        </div>
-
-        <!-- Project 7: MORAL TV & Radio -->
-        <div class="mono-card rounded-3xl p-6 flex flex-col justify-between project-card" data-category="ai">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-neutral-300 text-[11px] font-mono rounded-full">Live Broadcast & TV</span>
-              <i data-lucide="tv" class="w-4 h-4 text-neutral-400"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">MORAL TV & Radio 5786</h4>
-            <p class="text-xs text-neutral-400 mb-4 leading-relaxed">
-              רשת שידורי טלוויזיה ורדיו אינטרנטית עם נגני שידור חי, סנכרון לוחות שידורים וארכיטקטורת שרתים יציבה.
-            </p>
-          </div>
-          <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-            <div class="text-[11px] font-mono text-neutral-400">שידורים חיים • רדיו • TV</div>
-            <a href="https://github.com/yacovdroridev/moral-tv-radio" target="_blank" class="text-xs text-white hover:underline flex items-center gap-1 font-bold">GitHub <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
-          </div>
-        </div>
-
-        <!-- Project 8: Kliel IoT -->
-        <div class="mono-card rounded-3xl p-6 flex flex-col justify-between project-card" data-category="hardware">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-2.5 py-1 bg-white/5 border border-white/10 text-neutral-300 text-[11px] font-mono rounded-full">Smart Appliance & IoT</span>
-              <i data-lucide="hard-drive" class="w-4 h-4 text-neutral-400"></i>
-            </div>
-            <h4 class="text-base font-bold text-white mb-2">IoT Smart Refrigerator & Oracle</h4>
-            <p class="text-xs text-neutral-400 mb-4 leading-relaxed">
-              מערכת חומרה חכמה מבוססת בקרים עם סימולטור בדיקות אוטומטי וחיבור ישיר לענן ומערכות ניהול ארגוניות של Oracle.
-            </p>
-          </div>
-          <div class="pt-4 border-t border-white/5 flex items-center justify-between">
-            <div class="text-[11px] font-mono text-neutral-400">חומרה חכמה • בקרים • ענן</div>
-            <span class="text-xs text-white font-medium">Enterprise IoT</span>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <div class="text-[11px] font-mono text-slate-400">סוכני AI • בוט מכירות • WhatsApp</div>
+            <span class="text-xs text-pink-300 font-semibold">Production Ready</span>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- Pricing / Packages Section -->
+    <!-- Packages Section -->
     <section id="pricing" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="text-xs font-mono text-neutral-400 tracking-widest uppercase mb-2">Packages For Founders</div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">חבילות פיתוח מוגדרות — בלי הפתעות</h2>
-        <p class="text-sm text-neutral-400 mt-3">מחיר קבוע, לוחות זמנים קשיחים ומוצר עובד שמסופק לך ביד.</p>
+        <div class="text-xs font-mono text-pink-400 tracking-widest uppercase mb-2">Packages For Founders</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">חבילות פיתוח ברורות — הכל כלול</h2>
+        <p class="text-sm text-slate-300 mt-3">מחיר מוגדר, לוחות זמנים קצרים ומוצר אמיתי בידיים שלך.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
         
         <!-- Tier 1: 72-Hour MVP -->
-        <div class="mono-card rounded-3xl p-8 flex flex-col justify-between">
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border-indigo-500/20">
           <div>
-            <div class="text-xs font-mono text-neutral-400 uppercase tracking-widest mb-2">Investor Demo</div>
+            <div class="text-xs font-mono text-indigo-400 uppercase tracking-widest mb-2">Investor Demo</div>
             <h3 class="text-2xl font-bold text-white mb-2">72-Hour MVP</h3>
-            <p class="text-xs text-neutral-400 mb-6">מוצר ראשוני עובד, מעוצב ואינטראקטיבי להדגמה מיידית מול משקיעים תוך 3 ימים.</p>
-            <div class="text-3xl font-extrabold text-white font-mono mb-6">₪14,500 <span class="text-xs text-neutral-400 font-sans font-normal">/ פרויקט מוגדר</span></div>
+            <p class="text-xs text-slate-300 mb-6">מוצר ראשוני עובד, מעוצב ואינטראקטיבי להדגמה מיידית מול משקיעים תוך 3 ימים.</p>
+            <div class="text-3xl font-extrabold text-white font-mono mb-6">₪14,500 <span class="text-xs text-slate-400 font-sans font-normal">/ פרויקט מוגדר</span></div>
             
-            <ul class="space-y-3 text-xs text-neutral-300 mb-8">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> אפליקציה או ממשק Web חי ופעיל</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> שרת אחורי ובסיס נתונים בענן</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> דומיין חי ואפשרות התקנה בטלפון</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> 100% בעלות על כל הקוד והקניין הרוחני</li>
+            <ul class="space-y-3 text-xs text-slate-200 mb-8">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> אפליקציה או ממשק Web חי ופעיל</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> שרת אחורי ובסיס נתונים בענן</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> דומיין חי ואפשרות התקנה בטלפון</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 100% בעלות על כל הקוד והקניין הרוחני</li>
             </ul>
           </div>
-          <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%97%D7%91%D7%99%D7%9C%D7%AA%2072-Hour%20MVP%20%D7%9C%D7%9E%D7%A9%D7%A7%D7%99%D7%A2%D7%99%D7%9D" target="_blank" class="w-full py-3 rounded-xl bg-zinc-900 border border-white/10 hover:border-white/30 text-white text-xs font-bold text-center transition-all">הזמן 72h Investor MVP</a>
+          <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%97%D7%91%D7%99%D7%9C%D7%AA%2072-Hour%20MVP%20%D7%9C%D7%9E%D7%A9%D7%A7%D7%99%D7%A2%D7%99%D7%9D" target="_blank" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-bold text-center transition-all">הזמן 72h Investor MVP</a>
         </div>
 
         <!-- Tier 2: Product Launch (Featured) -->
-        <div class="mono-card rounded-3xl p-8 flex flex-col justify-between border-white/30 relative shadow-2xl">
-          <div class="absolute -top-3 right-8 px-3 py-0.5 bg-white text-black text-[10px] font-extrabold rounded-full font-mono uppercase tracking-wider">
-            MOST POPULAR
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border-pink-500/40 relative shadow-2xl bg-gradient-to-b from-slate-900 via-slate-900 to-pink-950/20">
+          <div class="absolute -top-3 right-8 px-3.5 py-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-[10px] font-extrabold rounded-full font-mono uppercase tracking-wider shadow-md">
+            MOST POPULAR & INVESTOR READY
           </div>
           <div>
-            <div class="text-xs font-mono text-neutral-400 uppercase tracking-widest mb-2">Full Market Ready</div>
-            <h3 class="text-2xl font-bold text-white mb-2">Product Launch</h3>
-            <p class="text-xs text-neutral-400 mb-6">מערכת מלאה ומוכנה לגיוס הון משמעותי ולהשקה מלאה ללקוחות משלמים.</p>
-            <div class="text-3xl font-extrabold text-white font-mono mb-6">₪28,000 <span class="text-xs text-neutral-400 font-sans font-normal">/ אבן דרך</span></div>
+            <div class="text-xs font-mono text-pink-400 uppercase tracking-widest mb-2">Full Market Ready</div>
+            <h3 class="text-2xl font-bold text-white mb-2">Product Launch & Investor Pitch</h3>
+            <p class="text-xs text-slate-300 mb-6">מערכת מלאה בחנויות + הכנה וחיבור ישיר לרשת המשקיעים שלנו.</p>
+            <div class="text-3xl font-extrabold text-white font-mono mb-6">₪28,000 <span class="text-xs text-slate-400 font-sans font-normal">/ אבן דרך</span></div>
             
-            <ul class="space-y-3 text-xs text-neutral-300 mb-8">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> אפליקציה מלאה ב-Google Play / App Store</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> מנגנון סליקה, מנויים ותשלומים אוטומטי</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> שרתי Linux מאובטחים ומוקשחים</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> סוכני AI ואוטומציית WhatsApp ללידים</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> תמיכה וליווי טכנולוגי בפגישות מול משקיעים</li>
+            <ul class="space-y-3 text-xs text-slate-200 mb-8">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> אפליקציה מלאה ב-Google Play / App Store</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> מנגנון סליקה, מנויים ותשלומים אוטומטי</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> שרתי Linux מאובטחים ומוקשחים</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> סוכני AI ואוטומציית WhatsApp ללידים</li>
+              <li class="flex items-center gap-2 font-bold text-pink-300"><i data-lucide="check" class="w-4 h-4 text-pink-400"></i> חשיפה ישירה מול רשת המשקיעים והאנג'לים</li>
             </ul>
           </div>
-          <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Product%20Launch" target="_blank" class="w-full py-3 rounded-xl bg-white hover:bg-neutral-200 text-black text-xs font-bold text-center transition-all shadow-lg">התחל פיתוח מוצר מלא</a>
+          <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Product%20Launch%20%D7%95%D7%97%D7%99%D7%91%D7%95%D7%A8%20%D7%9C%D7%9E%D7%A9%D7%A7%D7%99%D7%A2%D7%99%D7%9D" target="_blank" class="btn-joyful w-full py-3.5 rounded-xl text-white text-xs font-bold text-center transition-all">התחל פיתוח מוצר מלא</a>
         </div>
 
         <!-- Tier 3: Fractional CTO -->
-        <div class="mono-card rounded-3xl p-8 flex flex-col justify-between">
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border-emerald-500/20">
           <div>
-            <div class="text-xs font-mono text-neutral-400 uppercase tracking-widest mb-2">Dedicated Partnership</div>
+            <div class="text-xs font-mono text-emerald-400 uppercase tracking-widest mb-2">Dedicated Partnership</div>
             <h3 class="text-2xl font-bold text-white mb-2">Fractional CTO</h3>
-            <p class="text-xs text-neutral-400 mb-6">מנהל טכנולוגי בכיר (40 שנות ניסיון) שמלווה אותך אישית, מתחזק את המערכת ושותף להצלחה.</p>
-            <div class="text-3xl font-extrabold text-white font-mono mb-6">₪12,000 <span class="text-xs text-neutral-400 font-sans font-normal">/ חודש (ריטיינר)</span></div>
+            <p class="text-xs text-slate-300 mb-6">מנהל טכנולוגי בכיר (40 שנות ניסיון) שמלווה אותך אישית, מתחזק את המערכת ושותף להצלחה.</p>
+            <div class="text-3xl font-extrabold text-white font-mono mb-6">₪12,000 <span class="text-xs text-slate-400 font-sans font-normal">/ חודש (ריטיינר)</span></div>
             
-            <ul class="space-y-3 text-xs text-neutral-300 mb-8">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> הובלה טכנולוגית מלאה של המיזם</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> ניהול שרתים, אבטחה ותשתיות ענן 24/7</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> ייצוג הצד הטכנולוגי בשיחות מול משקיעים</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-white"></i> פיתוח ושדרוג מתמיד של תכונות חדשות</li>
+            <ul class="space-y-3 text-xs text-slate-200 mb-8">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> הובלה טכנולוגית מלאה של המיזם</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> ניהול שרתים, אבטחה ותשתיות ענן 24/7</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> ייצוג הצד הטכנולוגי בפגישות מול משקיעים</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> פיתוח ושדרוג מתמיד של תכונות חדשות</li>
             </ul>
           </div>
-          <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%A9%D7%99%D7%A8%D7%95%D7%AA%D7%99%20Fractional%20CTO%20%D7%9C%D7%9E%D7%99%D7%96%D7%9D%20%D7%A9%D7%9C%D7%99" target="_blank" class="w-full py-3 rounded-xl bg-zinc-900 border border-white/10 hover:border-white/30 text-white text-xs font-bold text-center transition-all">תיאום שיחת שותפות</a>
+          <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%A9%D7%99%D7%A8%D7%95%D7%AA%D7%99%20Fractional%20CTO" target="_blank" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-bold text-center transition-all">תיאום שיחת שותפות</a>
         </div>
 
       </div>
@@ -602,57 +702,57 @@
 
     <!-- Interactive Cost & Timeline Calculator for Founders -->
     <section id="calculator" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-      <div class="mono-card rounded-3xl p-8 sm:p-12 border-white/20 relative">
+      <div class="glass-card rounded-3xl p-8 sm:p-12 border-purple-500/30 relative">
         <div class="text-center max-w-2xl mx-auto mb-10">
-          <div class="text-xs font-mono text-neutral-400 tracking-widest uppercase mb-2">Founder Estimator</div>
+          <div class="text-xs font-mono text-purple-400 tracking-widest uppercase mb-2">Founder Estimator</div>
           <h2 class="text-2xl sm:text-3xl font-extrabold text-white">מחשבון עלות וזמנים לפרויקט שלך</h2>
-          <p class="text-xs sm:text-sm text-neutral-400 mt-2">בחר את סוג המוצר שאתה רוצה לבנות וקבל הערכת מחיר ולו"ז שקופה במקום.</p>
+          <p class="text-xs sm:text-sm text-slate-300 mt-2">בחר את סוג המוצר שאתה רוצה לבנות וקבל הערכת מחיר ולו"ז שקופה במקום.</p>
         </div>
 
         <div class="space-y-8">
           <!-- Type of Project -->
           <div>
-            <label class="block text-xs font-mono text-neutral-300 mb-3">1. מה המוצר שאתה רוצה להציג למשקיעים?</label>
+            <label class="block text-xs font-mono text-slate-300 mb-3">1. מה המוצר שאתה רוצה להציג למשקיעים?</label>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <button class="calc-type-btn p-3 rounded-xl border border-white bg-white text-black text-xs font-bold text-center transition-all" data-val="mvp" data-base="14500" data-days="3">MVP מהיר להדגמה (72h)</button>
-              <button class="calc-type-btn p-3 rounded-xl border border-white/10 bg-zinc-900/60 text-neutral-400 text-xs font-semibold text-center hover:border-white/30 transition-all" data-val="flutter" data-base="22000" data-days="10">אפליקציית מובייל מלאה</button>
-              <button class="calc-type-btn p-3 rounded-xl border border-white/10 bg-zinc-900/60 text-neutral-400 text-xs font-semibold text-center hover:border-white/30 transition-all" data-val="ai" data-base="28000" data-days="14">מערכת AI ואוטומציה</button>
-              <button class="calc-type-btn p-3 rounded-xl border border-white/10 bg-zinc-900/60 text-neutral-400 text-xs font-semibold text-center hover:border-white/30 transition-all" data-val="embedded" data-base="34000" data-days="21">מכשיר חומרה / IoT</button>
+              <button class="calc-type-btn p-3 rounded-xl border border-pink-500 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-bold text-center transition-all shadow-md" data-val="mvp" data-base="14500" data-days="3">MVP מהיר להדגמה (72h)</button>
+              <button class="calc-type-btn p-3 rounded-xl border border-slate-700 bg-slate-800/80 text-slate-300 text-xs font-semibold text-center hover:border-slate-500 transition-all" data-val="flutter" data-base="22000" data-days="10">אפליקציית מובייל מלאה</button>
+              <button class="calc-type-btn p-3 rounded-xl border border-slate-700 bg-slate-800/80 text-slate-300 text-xs font-semibold text-center hover:border-slate-500 transition-all" data-val="ai" data-base="28000" data-days="14">מערכת AI ואוטומציה</button>
+              <button class="calc-type-btn p-3 rounded-xl border border-slate-700 bg-slate-800/80 text-slate-300 text-xs font-semibold text-center hover:border-slate-500 transition-all" data-val="embedded" data-base="34000" data-days="21">מכשיר חומרה / IoT</button>
             </div>
           </div>
 
           <!-- Addons Checkboxes -->
           <div>
-            <label class="block text-xs font-mono text-neutral-300 mb-3">2. תוספות ושדרוגים מומלצים:</label>
+            <label class="block text-xs font-mono text-slate-300 mb-3">2. תוספות ושדרוגים מומלצים:</label>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-zinc-900/40 cursor-pointer hover:border-white/20 transition-all">
-                <input type="checkbox" class="calc-addon rounded bg-zinc-900 border-white/20 text-white focus:ring-0" data-price="4500" data-days="2">
-                <span class="text-xs text-neutral-300">תשתית שרת לינוקס מאובטחת ועמידה בעומסים (+₪4,500)</span>
+              <label class="flex items-center gap-3 p-3.5 rounded-xl border border-slate-700 bg-slate-850/60 cursor-pointer hover:border-slate-500 transition-all">
+                <input type="checkbox" class="calc-addon rounded bg-slate-800 border-slate-600 text-pink-500 focus:ring-0" data-price="4500" data-days="2">
+                <span class="text-xs text-slate-200">תשתית שרת לינוקס מאובטחת ועמידה בעומסים (+₪4,500)</span>
               </label>
-              <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-zinc-900/40 cursor-pointer hover:border-white/20 transition-all">
-                <input type="checkbox" class="calc-addon rounded bg-zinc-900 border-white/20 text-white focus:ring-0" data-price="6000" data-days="3">
-                <span class="text-xs text-neutral-300">בוט מכירות ושירות אוטומטי בוואטסאפ (+₪6,000)</span>
+              <label class="flex items-center gap-3 p-3.5 rounded-xl border border-slate-700 bg-slate-850/60 cursor-pointer hover:border-slate-500 transition-all">
+                <input type="checkbox" class="calc-addon rounded bg-slate-800 border-slate-600 text-pink-500 focus:ring-0" data-price="6000" data-days="3">
+                <span class="text-xs text-slate-200">בוט מכירות ושירות אוטומטי בוואטסאפ (+₪6,000)</span>
               </label>
-              <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-zinc-900/40 cursor-pointer hover:border-white/20 transition-all">
-                <input type="checkbox" class="calc-addon rounded bg-zinc-900 border-white/20 text-white focus:ring-0" data-price="5500" data-days="2">
-                <span class="text-xs text-neutral-300">מערכת ניהול תוכן אינטראקטיבית לעריכה מרחוק (+₪5,500)</span>
+              <label class="flex items-center gap-3 p-3.5 rounded-xl border border-slate-700 bg-slate-850/60 cursor-pointer hover:border-slate-500 transition-all">
+                <input type="checkbox" class="calc-addon rounded bg-slate-800 border-slate-600 text-pink-500 focus:ring-0" data-price="5500" data-days="2">
+                <span class="text-xs text-slate-200">מערכת ניהול תוכן אינטראקטיבית לעריכה מרחוק (+₪5,500)</span>
               </label>
-              <label class="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-zinc-900/40 cursor-pointer hover:border-white/20 transition-all">
-                <input type="checkbox" class="calc-addon rounded bg-zinc-900 border-white/20 text-white focus:ring-0" data-price="4000" data-days="1">
-                <span class="text-xs text-neutral-300">מנגנון גביית תשלומים ומנויים באפליקציה (+₪4,000)</span>
+              <label class="flex items-center gap-3 p-3.5 rounded-xl border border-slate-700 bg-slate-850/60 cursor-pointer hover:border-slate-500 transition-all">
+                <input type="checkbox" class="calc-addon rounded bg-slate-800 border-slate-600 text-pink-500 focus:ring-0" data-price="4000" data-days="1">
+                <span class="text-xs text-slate-200">מנגנון גביית תשלומים ומנויים באפליקציה (+₪4,000)</span>
               </label>
             </div>
           </div>
 
           <!-- Live Estimation Display -->
-          <div class="p-6 rounded-2xl bg-black border border-white/15 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div class="p-6 rounded-2xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <div class="text-xs text-neutral-400 font-mono">הערכת השקעה משוערת:</div>
+              <div class="text-xs text-slate-400 font-mono">הערכת השקעה משוערת:</div>
               <div class="text-3xl font-extrabold text-white font-mono mt-1" id="calc-total-price">₪14,500</div>
-              <div class="text-xs text-neutral-400 mt-1">זמן עד למוצר מוכן להצגה: <span class="text-white font-bold" id="calc-total-days">3 ימי עבודה</span></div>
+              <div class="text-xs text-slate-400 mt-1">זמן עד למוצר מוכן להצגה: <span class="text-pink-400 font-bold" id="calc-total-days">3 ימי עבודה</span></div>
             </div>
 
-            <a href="#" id="calc-whatsapp-btn" target="_blank" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-white hover:bg-neutral-200 text-black font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md">
+            <a href="#" id="calc-whatsapp-btn" target="_blank" class="btn-joyful w-full sm:w-auto px-7 py-3.5 rounded-xl text-white font-bold text-xs flex items-center justify-center gap-2 transition-all">
               <i data-lucide="message-square" class="w-4 h-4"></i>
               <span>בוא נדבר על המפרט בוואטסאפ</span>
             </a>
@@ -662,29 +762,113 @@
     </section>
 
     <!-- Footer -->
-    <footer class="mt-auto border-t border-white/10 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <footer class="mt-auto border-t border-slate-800 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-right">
         <div>
           <div class="text-sm font-bold text-white font-mono tracking-wider">DRORI SYSTEMS</div>
-          <div class="text-xs text-neutral-400 mt-1">יעקב דרורי • פיתוח מוצרים, שרתי לינוקס וליווי טכנולוגי ליזמים ומשקיעים</div>
+          <div class="text-xs text-slate-400 mt-1">יעקב דרורי • פיתוח מוצרים, שרתי לינוקס ורשת חיבורים למשקיעים</div>
         </div>
 
-        <div class="flex items-center gap-6 text-xs text-neutral-400 font-mono">
+        <div class="flex items-center gap-6 text-xs text-slate-400 font-mono">
           <a href="mailto:yacov@drori.org" class="hover:text-white transition-colors">yacov@drori.org</a>
           <span>•</span>
           <a href="tel:+972549103046" class="hover:text-white transition-colors">+972-54-9103046</a>
           <span>•</span>
-          <a href="https://github.com/yacovdroridev" target="_blank" class="hover:text-white transition-colors flex items-center gap-1">GitHub <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+          <button onclick="openInvestorModal()" class="text-emerald-400 hover:underline font-bold">כניסת משקיעים</button>
         </div>
       </div>
     </footer>
 
   </div>
 
+  <!-- INVESTORS MODAL (כניסת משקיעים) -->
+  <div id="investor-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="glass-card rounded-3xl max-w-lg w-full p-6 sm:p-8 border-emerald-500/40 relative bg-slate-950 shadow-2xl text-right">
+      
+      <!-- Close button -->
+      <button onclick="closeInvestorModal()" class="absolute top-5 left-5 text-slate-400 hover:text-white p-1 rounded-lg">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+          <i data-lucide="key" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-white">פורטל משקיעים ואנג'לים</h3>
+          <p class="text-xs text-emerald-400 font-mono">DRORI SYSTEMS DEALFLOW NETWORK</p>
+        </div>
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-300 mb-6 leading-relaxed">
+        אנו מחברים משקיעים ואנג'לים ישירות למיזמים בעלי <strong class="text-white">מוצר עובד מוכח (MVP חי)</strong> שנבנה בסטודיו שלנו. הרשם לקבלת גישה מוקדמת לפרויקטים הבאים:
+      </p>
+
+      <form onsubmit="handleInvestorSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">שם מלא / שם הקרן:</label>
+          <input type="text" id="investor-name" required placeholder="ישראל ישראלי" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-emerald-400">
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">אימייל לקבלת עדכוני דיל-פלואו:</label>
+          <input type="email" id="investor-email" required placeholder="investor@fund.com" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-emerald-400">
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">תחומי עניין עיקריים להשקעה:</label>
+          <select id="investor-interest" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-emerald-400">
+            <option value="ai">סוכני AI, מודלי שפה ואוטומציה</option>
+            <option value="mobile">אפליקציות מובייל B2C ומנויים</option>
+            <option value="hardware">חומרה חכמה, IoT ותעשייה</option>
+            <option value="all">הכל – מעוניין בדיל-פלואו כללי</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-investor w-full py-3 rounded-xl text-white font-bold text-xs flex items-center justify-center gap-2 mt-2">
+          <i data-lucide="lock" class="w-4 h-4"></i>
+          <span>קבלת גישה למיזמים ודיל-פלואו</span>
+        </button>
+      </form>
+
+      <div class="mt-4 pt-4 border-t border-slate-800 text-center">
+        <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A9%D7%A7%D7%99%D7%A2%2F%D7%90%D7%A0%D7%92%27%D7%9C%20%D7%95%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%9E%D7%99%D7%96%D7%9E%D7%99%D7%9D%20%D7%97%D7%93%D7%A9%D7%99%D7%9D" target="_blank" class="text-xs text-slate-400 hover:text-emerald-300 font-mono flex items-center justify-center gap-1">
+          <span>או פנה ישירות בוואטסאפ לדיון אישי</span>
+          <i data-lucide="message-square" class="w-3 h-3 text-emerald-400"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Interactive JavaScript Logic -->
   <script>
     // Initialize Lucide Icons
     lucide.createIcons();
+
+    // Modal Control
+    function openInvestorModal() {
+      const modal = document.getElementById('investor-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeInvestorModal() {
+      const modal = document.getElementById('investor-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function handleInvestorSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('investor-name').value;
+      const email = document.getElementById('investor-email').value;
+      const interest = document.getElementById('investor-interest').value;
+      
+      const msg = `שלום יעקב, נרשמתי כמשקיע ברשת DRORI SYSTEMS:%0A- שם: ${encodeURIComponent(name)}%0A- אימייל: ${encodeURIComponent(email)}%0A- תחום עניין: ${encodeURIComponent(interest)}%0Aאשמח לקבל מידע על מיזמים להשקעה.`;
+      window.open(`https://wa.me/972549103046?text=${msg}`, '_blank');
+      closeInvestorModal();
+    }
 
     // Portfolio Filtering
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -734,23 +918,23 @@
       totalPriceEl.textContent = '₪' + currentPrice.toLocaleString();
       totalDaysEl.textContent = currentDays + ' ימי עבודה';
 
-      // Update WhatsApp Link for non-technical founders
-      let msg = `שלום יעקב, חישבתי מפרט לרעיון שלי באתר DRORI SYSTEMS:%0A- סוג המוצר המבוקש: ${selectedTypeLabel}%0A- השקעה משוערת: ₪${currentPrice.toLocaleString()}%0A- זמן מוכן להצגה: ${currentDays} ימי עבודה`;
+      // Update WhatsApp Link
+      let msg = `שלום יעקב, חישבתי מפרט לרעיון שלי באתר DRORI SYSTEMS:%0A- סוג המוצר: ${selectedTypeLabel}%0A- השקעה משוערת: ₪${currentPrice.toLocaleString()}%0A- זמן אספקה: ${currentDays} ימי עבודה`;
       if (activeAddons.length > 0) {
         msg += `%0A- תוספות שנבחרו:%0A  * ` + activeAddons.join('%0A  * ');
       }
-      msg += `%0A%0Aאשמח לשוחח איתך על הרעיון ואיך אפשר לקדם אותו למוצר מול משקיעים.`;
+      msg += `%0A%0Aאשמח לשוחח איתך על הרעיון ואיך נבנה מוצר ונחבר אותו למשקיעים.`;
       whatsappBtn.href = `https://wa.me/972549103046?text=${msg}`;
     }
 
     typeButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         typeButtons.forEach(b => {
-          b.classList.remove('border-white', 'bg-white', 'text-black');
-          b.classList.add('border-white/10', 'bg-zinc-900/60', 'text-neutral-400');
+          b.classList.remove('border-pink-500', 'bg-gradient-to-r', 'from-pink-500', 'to-purple-600', 'text-white');
+          b.classList.add('border-slate-700', 'bg-slate-800/80', 'text-slate-300');
         });
-        btn.classList.remove('border-white/10', 'bg-zinc-900/60', 'text-neutral-400');
-        btn.classList.add('border-white', 'bg-white', 'text-black');
+        btn.classList.remove('border-slate-700', 'bg-slate-800/80', 'text-slate-300');
+        btn.classList.add('border-pink-500', 'bg-gradient-to-r', 'from-pink-500', 'to-purple-600', 'text-white');
 
         basePrice = parseInt(btn.getAttribute('data-base'));
         baseDays = parseInt(btn.getAttribute('data-days'));
