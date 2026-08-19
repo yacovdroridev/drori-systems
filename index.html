@@ -1,412 +1,464 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl" class="scroll-smooth">
+<html lang="he" dir="rtl" class="scroll-smooth dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DRORI SYSTEMS | הנדסת מערכות, פיתוח אפליקציות ופתרונות AI</title>
-  <meta name="description" content="שילוב של 40 שנות הנדסת מערכות, חומרה ו-Embedded יחד עם סוכני AI אוטונומיים — פיתוח אפליקציות, מערכות מורכבות ואוטומציות עסקיות תוך ימים.">
-  
-  <!-- Fonts -->
+  <title>DRORI SYSTEMS | סטודיו להנדסת מערכות וסוכני AI אוטונומיים</title>
+  <meta name="description" content="סטודיו הנדסה עילית המשלב 40 שנות מומחיות במערכות לינוקס, חומרה ואפליקציות עם סוכני AI אוטונומיים. פיתוח MVP מלא ב-72 שעות.">
+
+  <!-- Google Fonts: Heebo (Hebrew), Inter (English), JetBrains Mono (Code) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Fira+Code:wght@400;500;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['Heebo', 'Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
           colors: {
-            cyber: {
-              bg: '#080c14',
-              surface: '#0f172a',
-              card: '#131e36',
-              border: '#1e293b',
-              accent: '#00f2fe',
+            brand: {
+              black: '#050608',
+              card: 'rgba(15, 18, 26, 0.75)',
+              cardHover: 'rgba(23, 28, 40, 0.85)',
+              border: 'rgba(255, 255, 255, 0.08)',
+              borderHover: 'rgba(56, 189, 248, 0.35)',
+              cyan: '#00f2fe',
+              blue: '#3b82f6',
+              indigo: '#6366f1',
               emerald: '#10b981',
-              neon: '#4facfe',
-              purple: '#8b5cf6',
-              glow: 'rgba(0, 242, 254, 0.15)'
+              amber: '#f59e0b',
             }
           },
-          fontFamily: {
-            hebrew: ['Assistant', 'sans-serif'],
-            mono: ['Fira Code', 'monospace'],
-            sans: ['Inter', 'Assistant', 'sans-serif']
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'shimmer': 'shimmer 2.5s linear infinite',
+            'radar': 'radar 8s linear infinite',
+          },
+          keyframes: {
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' }
+            }
           }
         }
       }
     }
   </script>
-  
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  
+
   <style>
+    /* Precision styling & custom glassmorphism */
     body {
-      background-color: #060911;
-      color: #e2e8f0;
-      font-family: 'Assistant', 'Inter', sans-serif;
+      background-color: #050608;
+      color: #f1f5f9;
+      font-feature-settings: "cv01", "ss03";
       overflow-x: hidden;
     }
-    .code-font {
-      font-family: 'Fira Code', monospace;
+
+    /* Ambient background grid */
+    .bg-grid-pattern {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
     }
-    .neon-glow-cyan {
-      box-shadow: 0 0 25px rgba(0, 242, 254, 0.25);
+
+    /* Glowing light blobs */
+    .glow-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      opacity: 0.18;
+      z-index: 0;
     }
-    .neon-glow-purple {
-      box-shadow: 0 0 25px rgba(139, 92, 246, 0.25);
-    }
-    .glass-card {
-      background: rgba(15, 23, 42, 0.75);
+
+    /* Glass card treatment with subtle inner highlight */
+    .glass-panel {
+      background: rgba(13, 16, 23, 0.72);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .glass-card:hover {
-      border-color: rgba(0, 242, 254, 0.35);
-      box-shadow: 0 10px 30px -10px rgba(0, 242, 254, 0.15);
+
+    .glass-panel:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+      box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.6), 0 0 20px -2px rgba(56, 189, 248, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
     }
-    .gradient-text {
-      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #8b5cf6 100%);
+
+    /* High-tech gradient borders */
+    .gradient-border-wrap {
+      position: relative;
+      background: linear-gradient(135deg, rgba(0, 242, 254, 0.3), rgba(99, 102, 241, 0.2), rgba(255, 255, 255, 0.05));
+      padding: 1px;
+      border-radius: 1.25rem;
+    }
+
+    /* Spotlight gradient text */
+    .text-gradient {
+      background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .grid-bg {
-      background-image: radial-gradient(rgba(0, 242, 254, 0.08) 1px, transparent 1px);
-      background-size: 32px 32px;
+
+    .text-gradient-cyan {
+      background: linear-gradient(135deg, #38bdf8 0%, #00f2fe 50%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
+
+    /* Custom range input */
+    input[type=range] {
+      -webkit-appearance: none;
+      background: rgba(255, 255, 255, 0.1);
+      height: 6px;
+      border-radius: 999px;
     }
-    ::-webkit-scrollbar-track {
-      background: #080c14;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #1e293b;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
       background: #00f2fe;
+      cursor: pointer;
+      box-shadow: 0 0 12px #00f2fe;
+      border: 2px solid #ffffff;
+    }
+
+    /* Filter button active state */
+    .filter-btn.active {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.5);
+      color: #38bdf8;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
     }
   </style>
 </head>
-<body class="selection:bg-cyan-500 selection:text-black">
+<body class="relative selection:bg-cyan-500/30 selection:text-cyan-200">
 
-  <!-- Background Decorative Ambient Lights -->
-  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
-    <div class="absolute top-1/3 -right-40 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
-  </div>
+  <!-- Ambient Light Blobs -->
+  <div class="glow-blob w-[600px] h-[600px] bg-cyan-500 top-[-100px] right-[-100px]"></div>
+  <div class="glow-blob w-[500px] h-[500px] bg-indigo-600 top-[40%] left-[-150px]"></div>
+  <div class="glow-blob w-[600px] h-[600px] bg-blue-600 bottom-[-100px] right-[20%]"></div>
 
-  <div class="relative z-10 grid-bg min-h-screen flex flex-col justify-between">
-    
-    <!-- Top Navigation Bar -->
-    <header class="sticky top-0 z-50 glass-card border-b border-slate-800/80">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        
-        <!-- Brand / Logo -->
-        <a href="#hero" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 p-0.5 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-            <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+  <!-- Background Grid Texture -->
+  <div class="fixed inset-0 bg-grid-pattern opacity-70 pointer-events-none z-0"></div>
+
+  <!-- Main Container -->
+  <div class="relative z-10 flex flex-col min-h-screen">
+
+    <!-- Top Floating Header -->
+    <header class="sticky top-4 z-50 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+      <nav class="glass-panel rounded-2xl px-5 py-3.5 flex items-center justify-between">
+        <!-- Logo / Brand -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-indigo-600 p-[1px] shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-500/40 transition-all">
+            <div class="w-full h-full bg-slate-950 rounded-[11px] flex items-center justify-center">
               <i data-lucide="cpu" class="w-5 h-5 text-cyan-400"></i>
             </div>
           </div>
-          <div>
-            <div class="text-xl font-bold tracking-wider gradient-text code-font">DRORI.SYSTEMS</div>
-            <div class="text-[11px] text-slate-400 tracking-wide font-mono">AI-AUGMENTED ENGINEERING</div>
+          <div class="text-right">
+            <span class="text-base font-extrabold tracking-wider text-white font-mono flex items-center gap-1.5">
+              DRORI<span class="text-cyan-400">SYSTEMS</span>
+            </span>
+            <span class="block text-[10px] text-slate-400 font-mono tracking-wider -mt-1">AI-AUGMENTED ENGINEERING</span>
           </div>
         </a>
 
-        <!-- Desktop Nav Links -->
-        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
-          <a href="#services" class="hover:text-cyan-400 transition-colors">שירותים</a>
-          <a href="#projects" class="hover:text-cyan-400 transition-colors">פרויקטים נבחרים</a>
-          <a href="#advantage" class="hover:text-cyan-400 transition-colors">היתרון ההנדסי</a>
-          <a href="#calculator" class="hover:text-cyan-400 transition-colors">מחשבון פרויקט</a>
-          <a href="#contact" class="hover:text-cyan-400 transition-colors">יצירת קשר</a>
-        </nav>
-
-        <!-- Action / CTA Buttons -->
-        <div class="flex items-center gap-3">
-          <button id="langToggle" class="px-3 py-1.5 text-xs font-mono rounded-lg border border-slate-700 bg-slate-900/60 hover:border-cyan-400 text-slate-300 transition-colors">
-            EN
-          </button>
-          
-          <a href="https://wa.me/972549103046?text=%D7%94%D7%99%D7%99%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%90%D7%A0%D7%99%20%D7%A4%D7%95%D7%A0%D7%97%20%D7%91%D7%A7%D7%A9%D7%A8%20%D7%9C%D7%A4%D7%99%D7%AA%D7%95%D7%97%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%20%D7%97%D7%93%D7%A9" target="_blank" rel="noopener noreferrer"
-             class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-md shadow-cyan-500/20 hover:scale-105 transition-all">
-            <i data-lucide="message-square" class="w-4 h-4"></i>
-            <span>וואטסאפ ישיר</span>
-          </a>
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+          <a href="#services" class="hover:text-cyan-400 transition-colors">שירותי ליבה</a>
+          <a href="#projects" class="hover:text-cyan-400 transition-colors">פרויקטים מוכחים</a>
+          <a href="#architecture" class="hover:text-cyan-400 transition-colors">ארכיטקטורה</a>
+          <a href="#pricing" class="hover:text-cyan-400 transition-colors">חבילות 72h</a>
+          <a href="#calculator" class="hover:text-cyan-400 transition-colors">מחשבון עלויות</a>
         </div>
 
-      </div>
+        <!-- Call to Action -->
+        <div class="flex items-center gap-3">
+          <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A2%D7%94%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%90%D7%A4%D7%99%D7%95%D7%9F" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs shadow-lg shadow-cyan-500/25 transition-all">
+            <i data-lucide="message-square" class="w-4 h-4"></i>
+            <span>שיחת אפיון בוואטסאפ</span>
+          </a>
+          <a href="tel:+972549103046" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-cyan-400 hover:border-cyan-500/50 transition-colors">
+            <i data-lucide="phone-call" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </nav>
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="pt-16 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center relative">
-      
-      <!-- Top Badge -->
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-mono tracking-wide mb-8 animate-pulse">
-        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-        <span>40 שנות הנדסת מערכות • מומחה שרתי Linux & DevOps • סוכני AI אוטונומיים בזמן אמת</span>
+    <section class="pt-16 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center relative">
+      <!-- Live Status Pill -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-xs font-mono mb-8 backdrop-blur-md">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="font-semibold">פיתוח מערכות מהיר מבוסס סוכני AI • 40 שנות הנדסה ומערכות לינוקס</span>
       </div>
 
       <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight max-w-5xl">
-        מהחומרה ועד הענן — <br class="hidden sm:block">
-        <span class="gradient-text">מערכות חכמות, אפליקציות ו-AI</span> <br>
-        במהירות שיא.
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.15] mb-6">
+        הופכים רעיון מורכב למוצר <span class="text-gradient-cyan">עובד ומוכח</span> תוך 72 שעות
       </h1>
 
       <!-- Subtitle -->
-      <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-3xl leading-relaxed">
-        אנו הופכים רעיונות מורכבים למוצרים דיגיטליים וטכנולוגיים עובדים בתוך ימים בודדים.
-        פיתוח אפליקציות מובייל, מומחיות עמוקה בשרתי Linux ותשתיות ענן, פתרונות Embedded & IoT, ואוטומציות AI מקצה לקצה.
+      <p class="text-base sm:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed mb-10 font-normal">
+        פיתוח תוכנה, אפליקציות Flutter, תשתיות שרתי לינוקס ומערכות חומרה/IoT. שילוב ייחודי של <strong class="text-slate-200">מומחיות הנדסית בת 40 שנה</strong> עם ארכיטקטורת <strong class="text-cyan-400">סוכני AI אוטונומיים</strong> שמקצרים שבועות של עבודה לימים בודדים.
       </p>
 
-      <!-- Key Metrics Counter / Fast Facts -->
-      <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl text-right">
-        <div class="glass-card p-4 rounded-2xl">
-          <div class="text-2xl sm:text-3xl font-extrabold text-cyan-400 code-font">72h - 7d</div>
-          <div class="text-xs text-slate-400 mt-1">מ-MVP לרמת ייצור והשקה</div>
+      <!-- Primary Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-16">
+        <a href="#calculator" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 text-slate-950 font-extrabold text-sm sm:text-base shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] transition-all flex items-center gap-2">
+          <span>הפעל מחשבון עלויות ולו"ז</span>
+          <i data-lucide="calculator" class="w-5 h-5"></i>
+        </a>
+        <a href="#projects" class="px-8 py-4 rounded-2xl glass-panel text-white font-semibold text-sm sm:text-base hover:bg-slate-800/80 transition-all flex items-center gap-2">
+          <span>צפה בתיק הפרויקטים</span>
+          <i data-lucide="folder-git-2" class="w-5 h-5 text-cyan-400"></i>
+        </a>
+      </div>
+
+      <!-- Trust Metrics Bar -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+        <div class="glass-panel p-5 rounded-2xl text-right">
+          <div class="text-3xl font-extrabold text-white font-mono flex items-baseline gap-1">
+            40<span class="text-cyan-400 text-lg">+</span>
+          </div>
+          <div class="text-xs text-slate-400 mt-1">שנות הנדסת מערכות וחומרה</div>
         </div>
-        <div class="glass-card p-4 rounded-2xl">
-          <div class="text-2xl sm:text-3xl font-extrabold text-purple-400 code-font">40+ YRS</div>
-          <div class="text-xs text-slate-400 mt-1">ניסיון עמוק בהנדסת מערכות</div>
-        </div>
-        <div class="glass-card p-4 rounded-2xl">
-          <div class="text-2xl sm:text-3xl font-extrabold text-amber-400 code-font">Linux Expert</div>
+        <div class="glass-panel p-5 rounded-2xl text-right">
+          <div class="text-3xl font-extrabold text-amber-400 font-mono flex items-baseline gap-1">
+            Linux<span class="text-xs text-amber-300 mr-1 font-sans font-bold">מומחה שרתים</span>
+          </div>
           <div class="text-xs text-slate-400 mt-1">ניהול שרתים, ענן ו-DevOps</div>
         </div>
-        <div class="glass-card p-4 rounded-2xl">
-          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 code-font">100% Full-Stack</div>
-          <div class="text-xs text-slate-400 mt-1">חומרה, אפליקציות, ענן וסליקה</div>
+        <div class="glass-panel p-5 rounded-2xl text-right">
+          <div class="text-3xl font-extrabold text-emerald-400 font-mono">
+            72h
+          </div>
+          <div class="text-xs text-slate-400 mt-1">מסגירת אפיון ל-MVP עובד באוויר</div>
+        </div>
+        <div class="glass-panel p-5 rounded-2xl text-right">
+          <div class="text-3xl font-extrabold text-cyan-400 font-mono">
+            100%
+          </div>
+          <div class="text-xs text-slate-400 mt-1">קוד מקור שייך ללקוח (IP מלא)</div>
         </div>
       </div>
-
-      <!-- Action Buttons -->
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-        <a href="#projects" class="px-7 py-3.5 rounded-xl text-sm font-bold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-xl shadow-cyan-500/20 hover:scale-105 transition-all flex items-center gap-2">
-          <i data-lucide="eye" class="w-4 h-4"></i>
-          <span>לצפייה בפרויקטים ובקוד</span>
-        </a>
-        <a href="#contact" class="px-7 py-3.5 rounded-xl text-sm font-bold glass-card text-white hover:border-cyan-400 transition-all flex items-center gap-2">
-          <i data-lucide="sparkles" class="w-4 h-4 text-cyan-400"></i>
-          <span>בואו נדבר על הפרויקט שלכם</span>
-        </a>
-      </div>
-
     </section>
 
-    <!-- Services Section -->
+    <!-- Core Services Grid -->
     <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-xs font-mono text-cyan-400 tracking-widest uppercase mb-2">תחומי התמחות</h2>
-        <h3 class="text-3xl sm:text-4xl font-extrabold text-white">מה אנחנו מפתחים ומספקים?</h3>
-        <p class="text-slate-400 mt-4 text-sm sm:text-base">
-          פתרון מלא מקצה לקצה. אין צורך לחפש מפתח קדמי, מפתח שרת, מהנדס חומרה ומומחה ענן בנפרד.
-        </p>
+        <div class="text-xs font-mono text-cyan-400 tracking-wider uppercase mb-2">Capabilities & Engineering</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">תחומי התמחות ושירותי ליבה</h2>
+        <p class="text-sm sm:text-base text-slate-400 mt-3">מענה הנדסי שלם משכבת החומרה והקרנל ועד לאפליקציית המשתמש וסוכני הבינה המלאכותית.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- Service Card 1 -->
-        <div class="glass-card p-7 rounded-3xl relative group">
+        <!-- Card 1: Flutter & Mobile Apps -->
+        <div class="glass-panel p-7 rounded-3xl relative group">
           <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-6 text-cyan-400 group-hover:scale-110 transition-transform">
             <i data-lucide="smartphone" class="w-6 h-6"></i>
           </div>
-          <h4 class="text-xl font-bold text-white mb-3">אפליקציות מובייל (Flutter)</h4>
-          <p class="text-sm text-slate-400 leading-relaxed mb-4">
-            פיתוח אפליקציות חוצות-פלטפורמות (Android, iOS & Web) כולל התאמה מלאה לעברית/RTL, חיבורי סליקה ב-Google Play, סנכרון נתונים חי (OTA) ומערכות ניהול תוכן.
+          <h3 class="text-xl font-bold text-white mb-3">אפליקציות Mobile & Web</h3>
+          <p class="text-sm text-slate-400 leading-relaxed mb-5">
+            פיתוח Flutter מתקדם (iOS & Android) בקוד אחיד, חיבורי סליקה ב-Google Play / App Store, מערכות ניהול תוכן אינטראקטיביות וסנכרון OTA בזמן אמת ללא צורך בהמתנה לעדכון בחנות.
           </p>
           <div class="flex flex-wrap gap-2 text-xs font-mono text-cyan-300">
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">Flutter</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">Dart</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">In-App Purchase</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">OTA Updates</span>
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">Flutter</span>
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">OTA Content Sync</span>
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">In-App Purchases</span>
           </div>
         </div>
 
-        <!-- Service Card 2 -->
-        <div class="glass-card p-7 rounded-3xl relative group">
-          <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6 text-purple-400 group-hover:scale-110 transition-transform">
-            <i data-lucide="bot" class="w-6 h-6"></i>
-          </div>
-          <h4 class="text-xl font-bold text-white mb-3">אוטומציות וסוכני AI מתקדמים</h4>
-          <p class="text-sm text-slate-400 leading-relaxed mb-4">
-            בוטים חכמים ל-WhatsApp ולטלגרם, צינורות סנכרון לידים מ-Google Sheets, מודלי שפה מקומיים (Local LLM כגון Gemma/Llama) לאבטחת פרטיות מקסימלית ואוטומציה עסקית.
-          </p>
-          <div class="flex flex-wrap gap-2 text-xs font-mono text-purple-300">
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">AI Agents</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">WhatsApp Web</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">Ollama</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">Automations</span>
-          </div>
-        </div>
-
-        <!-- Service Card 3 -->
-        <div class="glass-card p-7 rounded-3xl relative group">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6 text-emerald-400 group-hover:scale-110 transition-transform">
-            <i data-lucide="cpu" class="w-6 h-6"></i>
-          </div>
-          <h4 class="text-xl font-bold text-white mb-3">חומרה, Embedded & מכשור תעשייתי</h4>
-          <p class="text-sm text-slate-400 leading-relaxed mb-4">
-            פיתוח Low-Level עבור בקרים ומעבדים (STM32, NXP i.MX RT1170, Xilinx FPGA, Zynq, ESP32, Arduino), אבטחת חומרה וצריבת eFuses, מכשור רנטגן ומערכות תעשייה מתקדמות.
-          </p>
-          <div class="flex flex-wrap gap-2 text-xs font-mono text-emerald-300">
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">C / C++</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">STM32 / NXP</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">Xilinx FPGA</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">eFuse Security</span>
-          </div>
-        </div>
-
-        <!-- Service Card 4 -->
-        <div class="glass-card p-7 rounded-3xl relative group">
-          <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6 text-blue-400 group-hover:scale-110 transition-transform">
-            <i data-lucide="radio" class="w-6 h-6"></i>
-          </div>
-          <h4 class="text-xl font-bold text-white mb-3">שרתי מדיה ושידורים חיים (Streaming)</h4>
-          <p class="text-sm text-slate-400 leading-relaxed mb-4">
-            הקמת חדרי שידור חיים (Owncast, HLS, WebRTC), תחנות רדיו וטלוויזיה אינטרנטיות עם לוחות שידורים, צ'אט חי ודפי נחיתה אינטראקטיביים עם המרות גבוהות.
-          </p>
-          <div class="flex flex-wrap gap-2 text-xs font-mono text-blue-300">
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">Live Stream</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">WebRTC</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">HLS Audio/Video</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">Owncast</span>
-          </div>
-        </div>
-
-        <!-- Service Card 5 -->
-        <div class="glass-card p-7 rounded-3xl relative group">
+        <!-- Card 2: Linux Server Expert & DevOps -->
+        <div class="glass-panel p-7 rounded-3xl relative group border-amber-500/30">
           <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6 text-amber-400 group-hover:scale-110 transition-transform">
             <i data-lucide="server" class="w-6 h-6"></i>
           </div>
-          <h4 class="text-xl font-bold text-white mb-3">מומחה שרתי Linux & DevOps</h4>
-          <p class="text-sm text-slate-400 leading-relaxed mb-4">
-            מומחיות של מעל 25 שנה בהקמה, ניהול, הקשחה ואופטימיזציה של שרתי Linux (Ubuntu/Debian). ארכיטקטורת Docker מרובת ארכיטקטורות (x86, ARM, NVIDIA), רשתות Tailscale Funnel מאובטחות, וירטואליזציה ו-CI/CD אוטונומי.
+          <h3 class="text-xl font-bold text-white mb-3">מומחה שרתי Linux & DevOps</h3>
+          <p class="text-sm text-slate-400 leading-relaxed mb-5">
+            מעל 25 שנות מומחיות בהקמה, הקשחה, וירטואליזציה ותחזוקת שרתי לינוקס (Debian/Ubuntu). סביבות Docker מרובות ארכיטקטורות (x86, ARM, GPU), רשתות Tailscale Funnel מאובטחות ו-CI/CD אוטונומי.
           </p>
           <div class="flex flex-wrap gap-2 text-xs font-mono text-amber-300">
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">Linux Expert</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">Server Hardening</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">Docker / KVM</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">Tailscale Mesh</span>
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">Linux Hardening</span>
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">Docker Multi-Arch</span>
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">Tailscale Mesh</span>
           </div>
         </div>
 
-        <!-- Service Card 6 -->
-        <div class="glass-card p-7 rounded-3xl relative group">
-          <div class="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mb-6 text-rose-400 group-hover:scale-110 transition-transform">
-            <i data-lucide="shield-check" class="w-6 h-6"></i>
+        <!-- Card 3: Autonomous AI Agents & Workflows -->
+        <div class="glass-panel p-7 rounded-3xl relative group">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-6 text-indigo-400 group-hover:scale-110 transition-transform">
+            <i data-lucide="bot" class="w-6 h-6"></i>
           </div>
-          <h4 class="text-xl font-bold text-white mb-3">ייעוץ וארכיטקטורת מערכות</h4>
-          <p class="text-sm text-slate-400 leading-relaxed mb-4">
-            ייעוץ טכנולוגי בכיר ליזמים ולחברות. בחינת היתכנות (PoC), בחירת רכיבי חומרה, תכנון ארכיטקטורת מערכת נכונה וחסכונית ומניעת טעויות יקרות בפיתוח.
+          <h3 class="text-xl font-bold text-white mb-3">סוכני AI & אוטומציה עסקית</h3>
+          <p class="text-sm text-slate-400 leading-relaxed mb-5">
+            הקמת צוותי סוכני בינה מלאכותית אוטונומיים (Hermes / Ollama / Claude Code), פיתוח צ'אטבוטים מותאמים אישית ל-WhatsApp, ואינטגרציות API מורכבות לחיסכון של עשרות שעות עבודה שבועיות.
           </p>
-          <div class="flex flex-wrap gap-2 text-xs font-mono text-rose-300">
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">System Architecture</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">PoC to Production</span>
-            <span class="px-2 py-1 bg-slate-900/80 rounded-md">Security</span>
+          <div class="flex flex-wrap gap-2 text-xs font-mono text-indigo-300">
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">Multi-Agent Systems</span>
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">Local LLMs</span>
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">WhatsApp Automation</span>
           </div>
         </div>
 
+        <!-- Card 4: Embedded, Hardware & Industrial -->
+        <div class="glass-panel p-7 rounded-3xl relative group">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6 text-emerald-400 group-hover:scale-110 transition-transform">
+            <i data-lucide="circuit-board" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">חומרה, Embedded & Low-Level</h3>
+          <p class="text-sm text-slate-400 leading-relaxed mb-5">
+            פיתוח Low-Level עבור בקרים ומעבדים (STM32, NXP i.MX RT1170, Xilinx FPGA, Zynq, ESP32, Arduino), אבטחת רכיבים וצריבת eFuses, מכשור רנטגן ותעשייה מתקדמת.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono text-emerald-300">
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">STM32 / NXP</span>
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">Xilinx FPGA</span>
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">eFuse Security</span>
+          </div>
+        </div>
+
+        <!-- Card 5: Remote Control & OS Utilities -->
+        <div class="glass-panel p-7 rounded-3xl relative group">
+          <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6 text-blue-400 group-hover:scale-110 transition-transform">
+            <i data-lucide="monitor" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">שליטה מרחוק וכלי מערכת</h3>
+          <p class="text-sm text-slate-400 leading-relaxed mb-5">
+            פיתוח פתרונות ייעודיים לשליטה מרחוק במסכים כולל סיבוב אוריינטציה חי (Remote Screen with Rotation), כלי שחזור חלונות וסשנים (WindowRecovery) ואוטומציות שולחן עבודה.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono text-blue-300">
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">Remote Screen</span>
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">Rotation Engine</span>
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">Session Guardian</span>
+          </div>
+        </div>
+
+        <!-- Card 6: Streaming Media & Live Broadcast -->
+        <div class="glass-panel p-7 rounded-3xl relative group">
+          <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6 text-purple-400 group-hover:scale-110 transition-transform">
+            <i data-lucide="radio" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">מדיה, שידורים חיים & סטרימינג</h3>
+          <p class="text-sm text-slate-400 leading-relaxed mb-5">
+            הקמת תחנות רדיו וטלוויזיה אינטרנטיות (HLS, WebRTC, Owncast), נגני שמע ורקע באפליקציות מובייל, מנועי תמלול ופונטיקה (G2P), וארכיטקטורת שידור לעומסים כבדים.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono text-purple-300">
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">Owncast / HLS</span>
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">Biblical G2P</span>
+            <span class="px-2.5 py-1 bg-slate-900/80 rounded-lg border border-slate-800">Live Audio</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Selected Projects / Portfolio Showcase -->
+    <!-- Verified Portfolio Showcase -->
     <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-xs font-mono text-cyan-400 tracking-widest uppercase mb-2">תיק עבודות חי</h2>
-        <h3 class="text-3xl sm:text-4xl font-extrabold text-white">פרויקטים נבחרים מהשטח</h3>
-        <p class="text-slate-400 mt-4 text-sm sm:text-base">
-          מערכות אמיתיות, אפליקציות בחנויות, חומרה וקוד פתוח המעידים על היכולת והעומק ההנדסי.
-        </p>
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <div class="text-xs font-mono text-cyan-400 tracking-wider uppercase mb-2">Verified Production Work</div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">פרויקטים מוכחים מתוך המאגרים</h2>
+        </div>
+        
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap gap-2 mt-6 md:mt-0" id="filter-container">
+          <button class="filter-btn active px-4 py-2 rounded-xl text-xs font-mono border border-slate-800 text-slate-400 hover:text-white transition-all" data-filter="all">הכל</button>
+          <button class="filter-btn px-4 py-2 rounded-xl text-xs font-mono border border-slate-800 text-slate-400 hover:text-white transition-all" data-filter="linux">שרתי לינוקס & כלים</button>
+          <button class="filter-btn px-4 py-2 rounded-xl text-xs font-mono border border-slate-800 text-slate-400 hover:text-white transition-all" data-filter="mobile">אפליקציות Flutter</button>
+          <button class="filter-btn px-4 py-2 rounded-xl text-xs font-mono border border-slate-800 text-slate-400 hover:text-white transition-all" data-filter="hardware">חומרה & תעשייה</button>
+          <button class="filter-btn px-4 py-2 rounded-xl text-xs font-mono border border-slate-800 text-slate-400 hover:text-white transition-all" data-filter="ai">סוכני AI & אוטומציה</button>
+        </div>
       </div>
 
-      <!-- Project Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Project 1: Tefila & Meditation -->
-        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-400 transition-all">
+      <!-- Project Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+        
+        <!-- Project 1: Tefila Meditation & Content Sync -->
+        <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between project-card" data-category="mobile">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono rounded-full">Mobile + Cloud OTA</span>
-              <i data-lucide="book-open" class="w-5 h-5 text-cyan-400"></i>
+              <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono rounded-full">Mobile & Cloud Sync</span>
+              <i data-lucide="cloud-sync" class="w-5 h-5 text-cyan-400"></i>
             </div>
-            <h4 class="text-lg font-bold text-white mb-2">Tefila Meditation & OTA Sync Portal</h4>
+            <h4 class="text-lg font-bold text-white mb-2">Tefila Meditation & OTA Sync</h4>
             <p class="text-xs text-slate-400 mb-4 leading-relaxed">
-              אפליקציית Flutter עשירה ללימוד ותרגול מדיטטיבי עם סנכרון תוכן חי (OTA) משרת Node.js ייעודי, עורך תוכן Web Mobile-First מתקדם ומערכת הפצה שקטה למשתמשים.
+              אפליקציית Flutter עשירה עם ממשק הגהה מקוון ושרת סנכרון תוכן (OTA Content-Sync) בזמן אמת ללא צורך בהעלאת גרסה חדשה ל-Google Play.
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-            <div class="text-[11px] font-mono text-slate-400">Flutter • SQLite • REST • OTA</div>
-            <span class="text-xs text-cyan-400 flex items-center gap-1 font-bold">Google Play <i data-lucide="check-circle" class="w-3.5 h-3.5"></i></span>
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+            <div class="text-[11px] font-mono text-slate-400">Flutter • Node.js • SQLite • OTA</div>
+            <span class="text-xs text-cyan-400 font-bold">Google Play Beta</span>
           </div>
         </div>
 
         <!-- Project 2: Bruker X-Ray Semiconductor Inspection -->
-        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between hover:border-emerald-400 transition-all">
+        <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between project-card" data-category="hardware">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono rounded-full">Semiconductor & Inspection</span>
-              <i data-lucide="scan" class="w-5 h-5 text-emerald-400"></i>
+              <span class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono rounded-full">Semiconductors & X-Ray</span>
+              <i data-lucide="cpu" class="w-5 h-5 text-emerald-400"></i>
             </div>
-            <h4 class="text-lg font-bold text-white mb-2">Bruker X-Ray Semiconductor Inspection</h4>
+            <h4 class="text-lg font-bold text-white mb-2">Bruker X-Ray Inspection System</h4>
             <p class="text-xs text-slate-400 mb-4 leading-relaxed">
               פיתוח שכבת ה-Low-Level ואינטגרציה במכשירי רנטגן מתקדמים המשמשים לבדיקת מעבדים ופרוסות סיליקון (Wafers) בקווי ייצור עבור יצרניות השבבים המובילות בעולם.
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-            <div class="text-[11px] font-mono text-slate-400">C • Python • STM32 • Inspection</div>
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+            <div class="text-[11px] font-mono text-slate-400">C • Python • Low-Level • Inspection</div>
             <span class="text-xs text-emerald-400 font-bold">Semiconductor Grade</span>
           </div>
         </div>
 
-        <!-- Project 3: Tehillim Mobile App & Dedications Gateway -->
-        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between hover:border-purple-400 transition-all">
+        <!-- Project 3: Tehillim App & Dedications Platform -->
+        <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between project-card" data-category="mobile">
           <div>
             <div class="flex items-center justify-between mb-4">
               <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-mono rounded-full">Mobile & Monetization</span>
-              <i data-lucide="smartphone" class="w-5 h-5 text-purple-400"></i>
+              <i data-lucide="book-open" class="w-5 h-5 text-purple-400"></i>
             </div>
             <h4 class="text-lg font-bold text-white mb-2">Tehillim App & Dedications Platform</h4>
             <p class="text-xs text-slate-400 mb-4 leading-relaxed">
               אפליקציית מובייל עשירה ב-Flutter הכוללת מנגנון רכישות בתוך האפליקציה (Google Play In-App Purchases), מנוע תמלול והגייה פונטי עברי ייחודי (G2P) ושרת הקדשות ציבורי מאובטח.
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
             <div class="text-[11px] font-mono text-slate-400">Flutter • Play Billing • G2P • Node.js</div>
             <span class="text-xs text-purple-400 font-bold">Production App</span>
           </div>
         </div>
 
         <!-- Project 4: Remote Screen with Live Rotation -->
-        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between hover:border-emerald-400 transition-all">
+        <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between project-card border-amber-500/20" data-category="linux">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono rounded-full">Linux & Remote Display</span>
-              <i data-lucide="monitor" class="w-5 h-5 text-emerald-400"></i>
+              <span class="px-3 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono rounded-full">Linux & Remote Display</span>
+              <i data-lucide="monitor" class="w-5 h-5 text-amber-400"></i>
             </div>
             <h4 class="text-lg font-bold text-white mb-2">Remote Screen with Live Rotation</h4>
             <p class="text-xs text-slate-400 mb-4 leading-relaxed">
               תוכנת שליטה, שיקוף ובקרה מרחוק על צגים ומסכים בסביבות Linux ו-Embedded, הכוללת יכולת היפוך וסיבוב אוריינטציה של התצוגה בזמן אמת, אופטימיזציית רוחב פס ו-Ultra-Low Latency.
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
             <div class="text-[11px] font-mono text-slate-400">Python • Linux X11/Wayland • Socket</div>
-            <a href="https://github.com/yacovdroridev/remote_screen_with_rotatation" target="_blank" class="text-xs text-emerald-400 hover:underline flex items-center gap-1 font-bold">GitHub <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+            <a href="https://github.com/yacovdroridev/remote_screen_with_rotatation" target="_blank" class="text-xs text-amber-400 hover:underline flex items-center gap-1 font-bold">GitHub <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
           </div>
         </div>
 
-        <!-- Project 5: WindowRecovery & Chrome Open -->
-        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-400 transition-all">
+        <!-- Project 5: WindowRecovery & Chrome Session Guardian -->
+        <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between project-card" data-category="linux">
           <div>
             <div class="flex items-center justify-between mb-4">
               <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono rounded-full">Desktop & Session Recovery</span>
@@ -417,14 +469,14 @@
               כלי אוטומציה מתקדם לשמירה, ניהול ושחזור מדויק של חלונות, טאבים של Chrome ומצבי עבודה מרובי מסכים בסביבות Linux Desktop, למניעת אובדן מידע וסביבות עבודה בקריסות ואתחולים.
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
             <div class="text-[11px] font-mono text-slate-400">Python • OS Automation • Chrome • Linux</div>
             <a href="https://github.com/yacovdroridev/windowRecovery" target="_blank" class="text-xs text-cyan-400 hover:underline flex items-center gap-1 font-bold">GitHub <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
           </div>
         </div>
 
-        <!-- Project 6: Marketing Automation & AI Agent Pipeline -->
-        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between hover:border-blue-400 transition-all">
+        <!-- Project 6: AI Marketing Automation Suite -->
+        <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between project-card" data-category="ai">
           <div>
             <div class="flex items-center justify-between mb-4">
               <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono rounded-full">AI & Automation</span>
@@ -435,279 +487,330 @@
               מערכת ניהול ואוטומציה מלאה המשלבת Flask, דשבורד לידים, ווטסאפ אוטומטי (whatsapp-web.js) ומודל שפה מקומי (Gemma via Ollama) לקמפיינים מותאמים אישית.
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
             <div class="text-[11px] font-mono text-slate-400">Flask • Ollama • WhatsApp API • JS</div>
             <span class="text-xs text-blue-400 font-bold">Production Ready</span>
           </div>
         </div>
 
         <!-- Project 7: MORAL TV & Radio Network -->
-        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between hover:border-amber-400 transition-all">
+        <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between project-card" data-category="ai">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono rounded-full">Media & Broadcast</span>
-              <i data-lucide="tv" class="w-5 h-5 text-amber-400"></i>
+              <span class="px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-mono rounded-full">Media & Broadcast</span>
+              <i data-lucide="tv" class="w-5 h-5 text-indigo-400"></i>
             </div>
             <h4 class="text-lg font-bold text-white mb-2">MORAL TV & Radio 5786</h4>
             <p class="text-xs text-slate-400 mb-4 leading-relaxed">
               רשת שידורי טלוויזיה ורדיו אינטרנטית בינלאומית הכוללת נגני שידור חי, סנכרון לוחות שידורים, אינטגרציית Owncast וארכיטקטורת שרתי הזרמת מדיה יציבה.
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
             <div class="text-[11px] font-mono text-slate-400">HLS • WebRTC • Owncast • Live Radio</div>
-            <a href="https://github.com/yacovdroridev/moral-tv-radio" target="_blank" class="text-xs text-amber-400 hover:underline flex items-center gap-1 font-bold">GitHub <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+            <a href="https://github.com/yacovdroridev/moral-tv-radio" target="_blank" class="text-xs text-indigo-400 hover:underline flex items-center gap-1 font-bold">GitHub <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
           </div>
         </div>
 
         <!-- Project 8: Kliel IoT Smart Refrigerator -->
-        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-400 transition-all">
+        <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between project-card" data-category="hardware">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono rounded-full">IoT & Cloud</span>
-              <i data-lucide="hard-drive" class="w-5 h-5 text-cyan-400"></i>
+              <span class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono rounded-full">IoT & Cloud</span>
+              <i data-lucide="hard-drive" class="w-5 h-5 text-emerald-400"></i>
             </div>
-            <h4 class="text-lg font-bold text-white mb-2">IoT Smart Refrigerator & Oracle Cloud</h4>
+            <h4 class="text-lg font-bold text-white mb-2">IoT Smart Refrigerator & Oracle</h4>
             <p class="text-xs text-slate-400 mb-4 leading-relaxed">
               מערכת IoT חכמה מבוססת Arduino ו-Orange Pi עם סימולטור בדיקות אוטומטי ב-Python ואינטגרציה ישירה למערכות הניהול של Oracle Cloud (Opera & Fidelio).
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+          <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
             <div class="text-[11px] font-mono text-slate-400">Arduino • Orange Pi • Oracle Cloud</div>
-            <span class="text-xs text-cyan-400 font-bold">Enterprise IoT</span>
+            <span class="text-xs text-emerald-400 font-bold">Enterprise IoT</span>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- Interactive Project Scope & Estimator -->
-    <section id="calculator" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-      <div class="glass-card rounded-3xl p-8 sm:p-10 border border-cyan-500/30 neon-glow-cyan">
-        <div class="text-center mb-8">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-mono mb-3">
-            <i data-lucide="calculator" class="w-4 h-4"></i> מחשבון הערכת פרויקט
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-extrabold text-white">כמה זמן ואילו מרכיבים דרושים לפרויקט שלך?</h3>
-          <p class="text-xs sm:text-sm text-slate-400 mt-2">סמן את המרכיבים הרצויים וקבל הערכת זמן עבודה ממוצעת</p>
+    <!-- Interactive Architecture Matrix -->
+    <section id="architecture" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="text-xs font-mono text-cyan-400 tracking-wider uppercase mb-2">System Architecture</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">ארכיטקטורת המערכת מקצה לקצה</h2>
+        <p class="text-sm sm:text-base text-slate-400 mt-3">אינטגרציה חלקה בין שכבות החומרה, מערכת ההפעלה, סוכני ה-AI וממשקי המשתמש.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <!-- Layer 1 -->
+        <div class="glass-panel p-6 rounded-3xl border-t-2 border-t-emerald-400">
+          <div class="text-xs font-mono text-emerald-400 mb-2">LAYER 01</div>
+          <h4 class="text-base font-bold text-white mb-2">Silicon & Embedded</h4>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">STM32, NXP RT1170, Xilinx FPGA, Zynq, eFuse Hardware Security, Sensors & Actuators.</p>
+          <div class="text-[11px] font-mono text-slate-500">C / C++ • Assembly • Verilog</div>
         </div>
 
-        <div class="space-y-4 text-sm font-semibold text-slate-200">
-          <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 cursor-pointer transition-colors">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" checked class="feature-calc rounded text-cyan-500 focus:ring-0 bg-slate-800 border-slate-700 w-4 h-4" data-days="3">
-              <span>אפליקציית מובייל Flutter (Android + Web) מותאמת RTL</span>
-            </div>
-            <span class="text-xs font-mono text-cyan-400">~3 ימים</span>
-          </label>
-
-          <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 cursor-pointer transition-colors">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" checked class="feature-calc rounded text-cyan-500 focus:ring-0 bg-slate-800 border-slate-700 w-4 h-4" data-days="2">
-              <span>שרת ענן, מסד נתונים ופאנל ניהול תוכן Web</span>
-            </div>
-            <span class="text-xs font-mono text-cyan-400">~2 ימים</span>
-          </label>
-
-          <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 cursor-pointer transition-colors">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" class="feature-calc rounded text-cyan-500 focus:ring-0 bg-slate-800 border-slate-700 w-4 h-4" data-days="2">
-              <span>אינטגרציית סוכני AI / בוט WhatsApp / מודל שפה מקומי</span>
-            </div>
-            <span class="text-xs font-mono text-cyan-400">~2 ימים</span>
-          </label>
-
-          <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 cursor-pointer transition-colors">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" class="feature-calc rounded text-cyan-500 focus:ring-0 bg-slate-800 border-slate-700 w-4 h-4" data-days="3">
-              <span>אינטגרציית חומרה / בקרים / חיישני IoT</span>
-            </div>
-            <span class="text-xs font-mono text-cyan-400">~3 ימים</span>
-          </label>
-
-          <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/50 cursor-pointer transition-colors">
-            <div class="flex items-center gap-3">
-              <input type="checkbox" checked class="feature-calc rounded text-cyan-500 focus:ring-0 bg-slate-800 border-slate-700 w-4 h-4" data-days="1">
-              <span>העלאה לחנויות (Google Play) והגדרת סליקה / OTA</span>
-            </div>
-            <span class="text-xs font-mono text-cyan-400">~1 יום</span>
-          </label>
+        <!-- Layer 2 -->
+        <div class="glass-panel p-6 rounded-3xl border-t-2 border-t-amber-400">
+          <div class="text-xs font-mono text-amber-400 mb-2">LAYER 02</div>
+          <h4 class="text-base font-bold text-white mb-2">Linux OS & Networking</h4>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">Debian/Ubuntu Server Hardening, Docker Multi-Arch, Tailscale Mesh Funnel, Remote Display Framebuffers.</p>
+          <div class="text-[11px] font-mono text-slate-500">Bash • Python • systemd • X11</div>
         </div>
 
-        <!-- Result Box -->
-        <div class="mt-8 p-5 rounded-2xl bg-gradient-to-r from-cyan-950/60 to-purple-950/60 border border-cyan-500/40 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <div class="text-xs text-slate-300">הערכת זמן פיתוח משוערת ל-MVP:</div>
-            <div class="text-2xl sm:text-3xl font-extrabold text-cyan-300 code-font" id="calcDaysTotal">~6 ימי עבודה</div>
-          </div>
-          <a href="https://wa.me/972549103046?text=%D7%94%D7%99%D7%99%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%94%D7%A8%D7%9B%D7%91%D7%AA%D7%99%20%D7%9E%D7%A4%D7%A8%D7%98%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%20%D7%91%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%94%D7%AA%D7%9B%D7%A0%D7%95%D7%AA" 
-             target="_blank" class="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-bold bg-cyan-400 hover:bg-cyan-300 text-slate-950 text-center font-sans transition-all">
-            קבל הצעת מחיר מדויקת
-          </a>
+        <!-- Layer 3 -->
+        <div class="glass-panel p-6 rounded-3xl border-t-2 border-t-indigo-400">
+          <div class="text-xs font-mono text-indigo-400 mb-2">LAYER 03</div>
+          <h4 class="text-base font-bold text-white mb-2">Autonomous AI & Backend</h4>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">Hermes Agent Loops, Claude Code, Ollama Gemma Local LLM, Node.js / Flask APIs, SQLite / Postgres.</p>
+          <div class="text-[11px] font-mono text-slate-500">Multi-Agent • REST • WebSocket</div>
         </div>
 
+        <!-- Layer 4 -->
+        <div class="glass-panel p-6 rounded-3xl border-t-2 border-t-cyan-400">
+          <div class="text-xs font-mono text-cyan-400 mb-2">LAYER 04</div>
+          <h4 class="text-base font-bold text-white mb-2">Client Experience & OTA</h4>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">Flutter Mobile Apps (iOS/Android), Live OTA Content Updates, Google Play Billing, Web Dashboards.</p>
+          <div class="text-[11px] font-mono text-slate-500">Flutter • Dart • Tailwind CSS</div>
+        </div>
       </div>
     </section>
 
-    <!-- Why Us / Engineering Advantage -->
-    <section id="advantage" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-800">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          
+    <!-- Pricing / Packages Section -->
+    <section id="pricing" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="text-xs font-mono text-cyan-400 tracking-wider uppercase mb-2">Transparent Pricing</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">חבילות פיתוח ושירותי הנדסה</h2>
+        <p class="text-sm sm:text-base text-slate-400 mt-3">עבודה ממוקדת תוצאות בלוחות זמנים קשיחים ובלי מריחת זמן.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        
+        <!-- Tier 1: 72-Hour MVP -->
+        <div class="glass-panel rounded-3xl p-8 flex flex-col justify-between border-slate-800">
           <div>
-            <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest">היתרון שלנו</span>
-            <h3 class="text-3xl font-extrabold text-white mt-2 mb-6">למה לעבוד איתנו ולא עם בית תוכנה מסורתי?</h3>
+            <div class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Rapid Prototyping</div>
+            <h3 class="text-2xl font-bold text-white mb-2">72-Hour MVP</h3>
+            <p class="text-xs text-slate-400 mb-6">הפיכת רעיון לאפליקציה / מערכת עובדת באוויר תוך 3 ימי עבודה מלאים.</p>
+            <div class="text-3xl font-extrabold text-white font-mono mb-6">₪14,500 <span class="text-xs text-slate-400 font-sans font-normal">/ פרויקט מוגדר</span></div>
             
-            <div class="space-y-5">
-              <div class="flex items-start gap-4">
-                <div class="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">
-                  <i data-lucide="zap" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <h4 class="text-base font-bold text-white">מהירות פיתוח פי 5 עד פי 10</h4>
-                  <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-                    שילוב סוכני AI מתקדמים עם מהנדס בכיר מאפשר לנו לכתוב, לבדוק ולפרוס קוד תוך שעות במקום חודשים של בירוקרטיה ופגישות סרק.
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-4">
-                <div class="w-8 h-8 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
-                  <i data-lucide="check-shield" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <h4 class="text-base font-bold text-white">איכות והבנה הנדסית עמוקה</h4>
-                  <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-                    הקוד אינו "הזיה של AI". כל שורה, ארכיטקטורה ורכיב נבדקים ומפוקחים על ידי מהנדס מערכת עם 40 שנות ניסיון בתעשיות הביטחון, הרכב והרפואה.
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-4">
-                <div class="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
-                  <i data-lucide="dollar-sign" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <h4 class="text-base font-bold text-white">חיסכון של עשרות אלפי שקלים</h4>
-                  <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-                    בלי דמי תיווך של מנהלי פרויקטים ומנהלי תיקי לקוחות. אתם עובדים ישירות עם המהנדס המוביל ומקבלים תוצאה מקסימלית בתקציב שפוי.
-                  </p>
-                </div>
-              </div>
-            </div>
-
+            <ul class="space-y-3 text-xs text-slate-300 mb-8">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> אפליקציית Flutter או ממשק Web עובד</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> שרת Backend + בסיס נתונים חי</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> פריסה בענן ודומיין חי</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> קוד מקור מלא ומתועד ב-GitHub</li>
+            </ul>
           </div>
-
-          <!-- Code / Live Terminal Visual Box -->
-          <div class="bg-slate-950 rounded-2xl p-5 border border-slate-800 shadow-2xl font-mono text-xs text-slate-300">
-            <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
-              <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
-                <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
-                <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
-              </div>
-              <span class="text-slate-500">live-agent@drori-systems:~</span>
-            </div>
-            <div class="space-y-2 text-left" dir="ltr">
-              <p class="text-cyan-400">$ ./orchestrate-project --stack flutter,node,ai,embedded</p>
-              <p class="text-slate-400">[✓] Analyzing requirement specifications...</p>
-              <p class="text-slate-400">[✓] Generating Flutter Mobile App (RTL, Provider, In-App-Purchase)...</p>
-              <p class="text-slate-400">[✓] Provisioning Content Sync Node.js Engine on port 4175...</p>
-              <p class="text-slate-400">[✓] Integrating Local Gemma/Ollama AI Pipeline...</p>
-              <p class="text-slate-400">[✓] Verifying STM32/ESP32 Telemetry via UART/WiFi...</p>
-              <p class="text-emerald-400 font-bold">[SUCCESS] Deployment verified in 48 hours. Ready for production.</p>
-            </div>
-          </div>
-
+          <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%97%D7%9F%20%D7%91%D7%97%D7%91%D7%99%D7%9 overlap%D7%AA%2072-Hour%20MVP" target="_blank" class="w-full py-3.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-400 text-white text-xs font-bold text-center transition-all">הזמן 72h MVP</a>
         </div>
+
+        <!-- Tier 2: Custom AI & Linux Systems (Featured) -->
+        <div class="glass-panel rounded-3xl p-8 flex flex-col justify-between border-cyan-500/50 relative shadow-2xl shadow-cyan-500/10">
+          <div class="absolute -top-3.5 right-8 px-3 py-1 bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 text-[11px] font-extrabold rounded-full font-mono uppercase">
+            POPULAR CHOICE
+          </div>
+          <div>
+            <div class="text-xs font-mono text-cyan-400 uppercase tracking-wider mb-2">Production Scale</div>
+            <h3 class="text-2xl font-bold text-white mb-2">Enterprise & AI Systems</h3>
+            <p class="text-xs text-slate-400 mb-6">מערכת שלמה הכוללת סוכני AI אוטונומיים, שרתי לינוקס מוקשחים ואינטגרציות מלאות.</p>
+            <div class="text-3xl font-extrabold text-cyan-400 font-mono mb-6">₪28,000 <span class="text-xs text-slate-400 font-sans font-normal">/ אבן דרך</span></div>
+            
+            <ul class="space-y-3 text-xs text-slate-300 mb-8">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> שרתי לינוקס מוקשחים + רשת Tailscale מאובטחת</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> פריסת סוכני AI מקומיים (Gemma / Claude / Multi-Agent)</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> מערכת ניהול תוכן והפצת OTA</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> אוטומציית WhatsApp / CRM / ERP</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> ליווי הנדסי וניטור שרתים 24/7</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%20Enterprise%20%26%20AI%20Systems" target="_blank" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 text-xs font-bold text-center transition-all shadow-lg shadow-cyan-500/25">התחל פרויקט מורחב</a>
+        </div>
+
+        <!-- Tier 3: Fractional CTO & Linux Architect -->
+        <div class="glass-panel rounded-3xl p-8 flex flex-col justify-between border-slate-800">
+          <div>
+            <div class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Dedicated Advisory</div>
+            <h3 class="text-2xl font-bold text-white mb-2">Fractional CTO & Linux Lead</h3>
+            <p class="text-xs text-slate-400 mb-6">ליווי הנדסי בכיר, ניהול תשתיות שרתים, ארכיטקטורת חומרה והובלת צוותי פיתוח.</p>
+            <div class="text-3xl font-extrabold text-white font-mono mb-6">₪12,000 <span class="text-xs text-slate-400 font-sans font-normal">/ חודש (ריטיינר)</span></div>
+            
+            <ul class="space-y-3 text-xs text-slate-300 mb-8">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> ניהול ותחזוקת שרתי לינוקס ותשתיות ענן</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> Code Review וארכיטקטורת מערכת שבועית</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> הטמעת כלי AI לפיתוח מהיר בצוות הקיים</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-400"></i> זמינות גבוהה למקרי חירום והתאוששות מאסון</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/972549103046?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%A9%D7%99%D7%A8%D7%95%D7%AA%D7%99%20Fractional%20CTO" target="_blank" class="w-full py-3.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-400 text-white text-xs font-bold text-center transition-all">תיאום שיחת ייעוץ</a>
+        </div>
+
       </div>
     </section>
 
-    <!-- Contact & Lead Form Section -->
-    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
-      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-800 relative">
-        <h2 class="text-xs font-mono text-cyan-400 tracking-widest uppercase mb-2">יצירת קשר ישיר</h2>
-        <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">מוכנים לצאת לדרך עם הפרויקט שלכם?</h3>
-        <p class="text-sm sm:text-base text-slate-400 max-w-xl mx-auto mb-8">
-          התייעצות ראשונית ללא כל התחייבות. נשמח לשמוע על הרעיון ולתת הערכת היתכנות ולוח זמנים מיידי.
-        </p>
-
-        <!-- Direct Contact Action Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto mb-8">
-          <a href="https://wa.me/972549103046?text=%D7%94%D7%99%D7%99%20%D7%99%D7%A2%D7%A7%D7%91%2C%20%D7%90%D7%A0%D7%99%20%D7%A4%D7%95%D7%A0%D7%97%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%91%D7%A7%D7%A9%D7%A8%20%D7%9C%D7%A4%D7%99%D7%AA%D7%95%D7%97" target="_blank"
-             class="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 text-emerald-400 flex flex-col items-center gap-2 transition-all group">
-            <i data-lucide="message-circle" class="w-8 h-8 group-hover:scale-110 transition-transform"></i>
-            <span class="text-sm font-bold text-white">שיחה ישירה בוואטסאפ</span>
-            <span class="text-xs font-mono text-emerald-400">054-9103046</span>
-          </a>
-
-          <a href="mailto:yacov@drori.org?subject=פנייה%20לפיתוח%20פרויקט" 
-             class="p-5 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 hover:bg-cyan-500/20 text-cyan-400 flex flex-col items-center gap-2 transition-all group">
-            <i data-lucide="mail" class="w-8 h-8 group-hover:scale-110 transition-transform"></i>
-            <span class="text-sm font-bold text-white">שליחת אימייל ישיר</span>
-            <span class="text-xs font-mono text-cyan-400">yacov@drori.org</span>
-          </a>
+    <!-- Interactive Cost & Timeline Calculator -->
+    <section id="calculator" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+      <div class="glass-panel rounded-3xl p-8 sm:p-12 border-cyan-500/40 relative">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <div class="text-xs font-mono text-cyan-400 tracking-wider uppercase mb-2">Instant Project Estimator</div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">מחשבון עלות ולוחות זמנים אינטראקטיבי</h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-2">בחר את מאפייני הפרויקט וקבל הערכת עלות וזמן אספקה מיידית.</p>
         </div>
 
-        <div class="text-xs text-slate-500 font-mono">
-          מיקום: צפון ישראל | עבודה היברידית, מקוונת ו-On-Site לפי צורך
+        <div class="space-y-8">
+          <!-- Type of Project -->
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-3">1. סוג המערכת המבוקשת:</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <button class="calc-type-btn p-3 rounded-xl border border-cyan-500/50 bg-cyan-500/10 text-cyan-400 text-xs font-semibold text-center" data-val="mvp" data-base="14500" data-days="3">72h MVP</button>
+              <button class="calc-type-btn p-3 rounded-xl border border-slate-800 bg-slate-900/60 text-slate-400 text-xs font-semibold text-center hover:border-slate-700" data-val="flutter" data-base="22000" data-days="10">אפליקציית Flutter</button>
+              <button class="calc-type-btn p-3 rounded-xl border border-slate-800 bg-slate-900/60 text-slate-400 text-xs font-semibold text-center hover:border-slate-700" data-val="ai" data-base="28000" data-days="14">מערכת סוכני AI</button>
+              <button class="calc-type-btn p-3 rounded-xl border border-slate-800 bg-slate-900/60 text-slate-400 text-xs font-semibold text-center hover:border-slate-700" data-val="embedded" data-base="34000" data-days="21">חומרה & Linux</button>
+            </div>
+          </div>
+
+          <!-- Addons Checkboxes -->
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-3">2. רכיבים ותשתיות נוספות:</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <label class="flex items-center gap-3 p-3.5 rounded-xl border border-slate-800 bg-slate-900/40 cursor-pointer hover:border-slate-700">
+                <input type="checkbox" class="calc-addon rounded text-cyan-500 focus:ring-0" data-price="4500" data-days="2">
+                <span class="text-xs text-slate-300">הקשחת שרת Linux + רשת Tailscale Funnel (+₪4,500)</span>
+              </label>
+              <label class="flex items-center gap-3 p-3.5 rounded-xl border border-slate-800 bg-slate-900/40 cursor-pointer hover:border-slate-700">
+                <input type="checkbox" class="calc-addon rounded text-cyan-500 focus:ring-0" data-price="6000" data-days="3">
+                <span class="text-xs text-slate-300">אוטומציית WhatsApp & בוט לידים (+₪6,000)</span>
+              </label>
+              <label class="flex items-center gap-3 p-3.5 rounded-xl border border-slate-800 bg-slate-900/40 cursor-pointer hover:border-slate-700">
+                <input type="checkbox" class="calc-addon rounded text-cyan-500 focus:ring-0" data-price="5500" data-days="2">
+                <span class="text-xs text-slate-300">מערכת ניהול תוכן ו-OTA בזמן אמת (+₪5,500)</span>
+              </label>
+              <label class="flex items-center gap-3 p-3.5 rounded-xl border border-slate-800 bg-slate-900/40 cursor-pointer hover:border-slate-700">
+                <input type="checkbox" class="calc-addon rounded text-cyan-500 focus:ring-0" data-price="4000" data-days="1">
+                <span class="text-xs text-slate-300">סליקה ב-Google Play / App Store (+₪4,000)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Live Estimation Display -->
+          <div class="p-6 rounded-2xl bg-slate-950/80 border border-cyan-500/30 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <div class="text-xs text-slate-400 font-mono">הערכת עלות משוערת:</div>
+              <div class="text-3xl font-extrabold text-cyan-400 font-mono mt-1" id="calc-total-price">₪14,500</div>
+              <div class="text-xs text-slate-400 mt-1">זמן אספקה משוער: <span class="text-white font-bold" id="calc-total-days">3 ימי עבודה</span></div>
+            </div>
+
+            <a href="#" id="calc-whatsapp-btn" target="_blank" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 transition-all">
+              <i data-lucide="message-square" class="w-4 h-4"></i>
+              <span>שלח מפרט ישירות לוואטסאפ</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-900 py-8 px-4 text-center text-xs text-slate-500 font-mono">
-      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div>© 2026 DRORI SYSTEMS. All Rights Reserved.</div>
-        <div class="flex items-center gap-4 text-slate-400">
-          <a href="https://github.com/yacovdroridev" target="_blank" class="hover:text-cyan-400">GitHub</a>
+    <footer class="mt-auto border-t border-slate-800/80 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-right">
+        <div>
+          <div class="text-sm font-bold text-white font-mono tracking-wider">DRORI SYSTEMS</div>
+          <div class="text-xs text-slate-400 mt-1">יעקב דרורי • הנדסת מערכות, שרתי לינוקס וסוכני בינה מלאכותית</div>
+        </div>
+
+        <div class="flex items-center gap-6 text-xs text-slate-400 font-mono">
+          <a href="mailto:yacov@drori.org" class="hover:text-cyan-400 transition-colors">yacov@drori.org</a>
           <span>•</span>
-          <a href="https://wa.me/972549103046" target="_blank" class="hover:text-cyan-400">WhatsApp</a>
+          <a href="tel:+972549103046" class="hover:text-cyan-400 transition-colors">+972-54-9103046</a>
           <span>•</span>
-          <a href="mailto:yacov@drori.org" class="hover:text-cyan-400">Email</a>
+          <a href="https://github.com/yacovdroridev" target="_blank" class="hover:text-cyan-400 transition-colors flex items-center gap-1">GitHub <i data-lucide="external-link" class="w-3 h-3"></i></a>
         </div>
       </div>
     </footer>
 
   </div>
 
-  <!-- Interactive Scripts -->
+  <!-- Interactive JavaScript Logic -->
   <script>
     // Initialize Lucide Icons
     lucide.createIcons();
 
-    // Project Estimator Calculator Logic
-    const checkboxes = document.querySelectorAll('.feature-calc');
-    const daysTotalEl = document.getElementById('calcDaysTotal');
+    // Portfolio Filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
 
-    function calculateTotal() {
-      let totalDays = 0;
-      checkboxes.forEach(cb => {
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Calculator Logic
+    let basePrice = 14500;
+    let baseDays = 3;
+    let selectedTypeLabel = "72h MVP";
+
+    const typeButtons = document.querySelectorAll('.calc-type-btn');
+    const addonCheckboxes = document.querySelectorAll('.calc-addon');
+    const totalPriceEl = document.getElementById('calc-total-price');
+    const totalDaysEl = document.getElementById('calc-total-days');
+    const whatsappBtn = document.getElementById('calc-whatsapp-btn');
+
+    function updateCalculator() {
+      let currentPrice = basePrice;
+      let currentDays = baseDays;
+      let activeAddons = [];
+
+      addonCheckboxes.forEach(cb => {
         if (cb.checked) {
-          totalDays += parseInt(cb.getAttribute('data-days'), 10);
+          currentPrice += parseInt(cb.getAttribute('data-price'));
+          currentDays += parseInt(cb.getAttribute('data-days'));
+          activeAddons.push(cb.parentElement.textContent.trim());
         }
       });
-      daysTotalEl.textContent = `~${totalDays} ימי עבודה`;
+
+      totalPriceEl.textContent = '₪' + currentPrice.toLocaleString();
+      totalDaysEl.textContent = currentDays + ' ימי עבודה';
+
+      // Update WhatsApp Link
+      let msg = `שלום יעקב, חישבתי מפרט באתר DRORI SYSTEMS:%0A- סוג מערכת: ${selectedTypeLabel}%0A- מחיר משוער: ₪${currentPrice.toLocaleString()}%0A- זמן משוער: ${currentDays} ימי עבודה`;
+      if (activeAddons.length > 0) {
+        msg += `%0A- תוספות שנבחרו:%0A  * ` + activeAddons.join('%0A  * ');
+      }
+      msg += `%0A%0Aאשמח לשוחח ולקדם את הפרויקט.`;
+      whatsappBtn.href = `https://wa.me/972549103046?text=${msg}`;
     }
 
-    checkboxes.forEach(cb => {
-      cb.addEventListener('change', calculateTotal);
+    typeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        typeButtons.forEach(b => {
+          b.classList.remove('border-cyan-500/50', 'bg-cyan-500/10', 'text-cyan-400');
+          b.classList.add('border-slate-800', 'bg-slate-900/60', 'text-slate-400');
+        });
+        btn.classList.remove('border-slate-800', 'bg-slate-900/60', 'text-slate-400');
+        btn.classList.add('border-cyan-500/50', 'bg-cyan-500/10', 'text-cyan-400');
+
+        basePrice = parseInt(btn.getAttribute('data-base'));
+        baseDays = parseInt(btn.getAttribute('data-days'));
+        selectedTypeLabel = btn.textContent.trim();
+        updateCalculator();
+      });
     });
 
-    // Language Toggle logic (Simple RTL/LTR text swap demo)
-    const langBtn = document.getElementById('langToggle');
-    let isHebrew = true;
-    langBtn.addEventListener('click', () => {
-      isHebrew = !isHebrew;
-      if (!isHebrew) {
-        document.documentElement.setAttribute('dir', 'ltr');
-        document.documentElement.setAttribute('lang', 'en');
-        langBtn.textContent = 'עב';
-      } else {
-        document.documentElement.setAttribute('dir', 'rtl');
-        document.documentElement.setAttribute('lang', 'he');
-        langBtn.textContent = 'EN';
-      }
+    addonCheckboxes.forEach(cb => {
+      cb.addEventListener('change', updateCalculator);
     });
+
+    // Initial calculation trigger
+    updateCalculator();
   </script>
 </body>
 </html>
