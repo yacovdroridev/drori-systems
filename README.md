@@ -9,7 +9,7 @@ Live portfolio and landing page showcasing 40+ years of hardware/software system
 - **Frontend / Landing:** HTML5, Tailwind CSS, Lucide Icons, Glassmorphism Cyberpunk UI, RTL/LTR support.
 - **Core Specializations:**
   - **Flutter & Mobile Ecosystem:** Android, iOS, Web, In-App-Purchases, OTA Live Content Sync.
-  - **Embedded & Robotics:** STM32, NXP RT1170, Xilinx FPGA / Zynq, ROS 2, Arduino, ESP32, Hardware eFuse Security.
+  - **Embedded & Industrial Systems:** STM32, NXP RT1170, Xilinx FPGA / Zynq, eFuse Hardware Security, Bruker X-Ray Inspection, Isolator Testers.
   - **AI Agents & Automations:** Ollama (Local Gemma/Llama), WhatsApp Web automations, Multi-Agent pipelines.
   - **Cloud & Media Streaming:** Owncast, HLS/WebRTC live broadcast, Docker multi-arch CI/CD.
 
