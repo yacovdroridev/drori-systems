@@ -1,17 +1,12 @@
-# DRORI SYSTEMS (AI-Augmented Engineering Studio)
+# Drori Systems
 
-> High-performance Systems Engineering, Flutter Mobile Apps, Embedded IoT, and Autonomous AI Agent Pipelines.
+Hebrew landing page for Yacov Drori's fixed-scope AI WhatsApp lead assistant for Israeli service businesses.
 
-## Overview
-Live portfolio and landing page showcasing 40+ years of hardware/software systems engineering combined with autonomous AI agent workflows.
+- Answers common questions in Hebrew
+- Qualifies by service, budget, area and urgency
+- Hands hot leads to the owner with a summary
+- 7-working-day implementation
 
-### Tech Stack
-- **Frontend / Landing:** HTML5, Tailwind CSS, Lucide Icons, Glassmorphism Cyberpunk UI, RTL/LTR support.
-- **Core Specializations:**
-  - **Flutter & Mobile Ecosystem:** Android, iOS, Web, In-App-Purchases, OTA Live Content Sync.
-  - **Embedded & Industrial Systems:** STM32, NXP RT1170, Xilinx FPGA / Zynq, eFuse Hardware Security, Bruker X-Ray Inspection, Isolator Testers.
-  - **AI Agents & Automations:** Ollama (Local Gemma/Llama), WhatsApp Web automations, Multi-Agent pipelines.
-  - **Cloud & Media Streaming:** Owncast, HLS/WebRTC live broadcast, Docker multi-arch CI/CD.
+The site also shows selected mobile, Linux and AI work from Yacov's decades of systems-engineering experience.
 
-## Live Demo
-Access the live landing page at: [https://yacovdroridev.github.io/drori-systems/](https://yacovdroridev.github.io/drori-systems/)
+Live: https://yacovdroridev.github.io/drori-systems/
