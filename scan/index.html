@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>סריקה והקשחה לבקרים מחוברים · יעקב דרורי</title>
+  <meta name="description" content="שבוע אחד של סריקה והקשחה לבקרים ומערכות אמבדד מחוברות לרשת — רק עם הרשאה כתובה. הורידו צ׳קליסט: 10 בדיקות לבקר שמחובר לרשת." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="סריקה והקשחה לבקרים מחוברים · יעקב דרורי" />
+  <meta property="og:description" content="הורידו צ׳קליסט: 10 בדיקות לבקר שמחובר לרשת. סריקה והקשחה רק עם הרשאה כתובה." />
+  <meta property="og:locale" content="he_IL" />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0b1f3a;
+      --tq: #2ec4b6;
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --muted: #5b6778;
+      --line: #dde3ea;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Heebo, "Segoe UI", Arial, sans-serif;
+      color: var(--navy);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+    header { background: var(--navy); color: #fff; padding: 28px 0 32px; }
+    header .by { color: rgba(255,255,255,.72); font-size: .95rem; margin-top: 8px; }
+    h1 {
+      margin: 0;
+      font-size: clamp(1.55rem, 4.5vw, 2rem);
+      line-height: 1.3;
+      font-weight: 800;
+    }
+    .badge {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(46,196,182,.18);
+      color: var(--tq);
+      font-weight: 700;
+      font-size: .88rem;
+    }
+    main { padding: 28px 0 40px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px 20px;
+      margin-bottom: 16px;
+    }
+    h2 { margin: 0 0 12px; font-size: 1.12rem; font-weight: 800; }
+    .sub { margin: 0 0 18px; color: var(--muted); font-size: 1.02rem; }
+    ul { margin: 0; padding: 0 18px 0 0; }
+    li { margin: 0 0 8px; }
+    .warn {
+      background: #eefaf9;
+      border: 1px solid var(--tq);
+      border-right: 6px solid var(--tq);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin: 0 0 16px;
+      font-size: .98rem;
+    }
+    .warn b { display: block; margin-bottom: 4px; }
+    .warn small { color: var(--muted); }
+    form label { display: block; text-align: right; margin: 0 0 12px; font-weight: 500; font-size: .95rem; }
+    form input[type="text"], form input[type="email"] {
+      display: block; width: 100%; margin-top: 6px;
+      font: inherit; padding: 12px 14px; border: 1px solid var(--line);
+      border-radius: 10px; color: var(--navy); background: #fff;
+    }
+    form input:focus { outline: 2px solid var(--tq); border-color: var(--tq); }
+    .consent {
+      display: flex; gap: 10px; align-items: flex-start;
+      margin: 4px 0 16px; font-size: .9rem; color: var(--muted); font-weight: 400;
+    }
+    .consent input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--tq); flex-shrink: 0; }
+    button.cta {
+      display: block; width: 100%; border: 0; cursor: pointer;
+      text-align: center; color: #041018; background: var(--tq);
+      font: inherit; font-weight: 800; font-size: 1.08rem;
+      padding: 16px 18px; border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(46,196,182,.28);
+    }
+    button.cta:hover { filter: brightness(1.04); }
+    button.cta:disabled { opacity: .55; cursor: default; }
+    .ok { display: none; text-align: center; padding: 8px 0; }
+    .ok.show { display: block; }
+    .ok a {
+      display: inline-block; margin-top: 12px; padding: 12px 18px;
+      background: var(--navy); color: #fff; text-decoration: none;
+      border-radius: 12px; font-weight: 700;
+    }
+    .steps {
+      display: grid; gap: 10px; margin: 0; padding: 0;
+      list-style: none; counter-reset: st;
+    }
+    .steps li {
+      counter-increment: st; background: #f5f7fa;
+      border-radius: 12px; padding: 12px 14px; margin: 0;
+    }
+    .steps b::before {
+      content: counter(st);
+      display: inline-block; width: 1.45em; height: 1.45em;
+      line-height: 1.45em; text-align: center; border-radius: 50%;
+      background: var(--tq); color: #fff; font-size: .8rem; margin-left: 8px;
+    }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 18px 0 28px; color: var(--muted);
+      font-size: .9rem; text-align: center;
+    }
+    footer a { color: var(--navy); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="badge">יעקב דרורי</div>
+      <h1>סריקה והקשחה לבקרים מחוברים</h1>
+      <p class="by">בקרים ומערכות אמבדד ישנות שמחוברות לרשת — בדיקה מעשית, לא סריקת רשת גנרית.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="warn" role="note">
+      <b>רק עם הרשאה כתובה מבעל המערכת</b>
+      <small>בלי הרשאה אין סריקה, אין חיבור לבקר, ואין בדיקה על רשת חיה.</small>
+    </div>
+
+    <div class="card" id="signup-card">
+      <h2>הורידו צ׳קליסט: 10 בדיקות לבקר מחובר</h2>
+      <p class="sub">«10 בדיקות לבקר שמחובר לרשת» — PDF קצר שתוכלו לעבור עליו היום.</p>
+      <form id="lead" novalidate>
+        <label>שם
+          <input name="name" type="text" autocomplete="name" placeholder="איך לקרוא לך" required />
+        </label>
+        <label>אימייל
+          <input name="email" type="email" autocomplete="email" placeholder="you@company.com" required dir="ltr" />
+        </label>
+        <label class="consent">
+          <input name="consent" type="checkbox" value="yes" required />
+          <span>אני מסכים/ה לקבל מיעקב דרורי תוכן על הקשחת בקרים במייל. אפשר להסיר בכל עת.</span>
+        </label>
+        <button class="cta" type="submit">הורידו את הצ׳קליסט החינמי</button>
+      </form>
+      <div class="ok" id="ok" role="status">
+        <h2 style="margin-bottom:6px">נרשמת ✓</h2>
+        <p class="sub" style="margin:0">הצ׳קליסט מוכן להורדה. בכל מייל תהיה גם אפשרות הסרה.</p>
+        <a href="checklist-10-checks.pdf" download>הורדת ה־PDF</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>מה מקבלים בשירות המלא</h2>
+      <p class="sub">שבוע אחד של סריקה והקשחה — ידני בהתחלה, ממוקד בסיכונים האמיתיים של בקרים מחוברים.</p>
+      <ul>
+        <li>דוח ממצאים בעברית עם רמת סיכון</li>
+        <li>רשימת הקשחה מעשית (עד 10 צעדים)</li>
+        <li>בלי הבטחה ש«אין פרצות» — רק מה שנמצא ומה כדאי לתקן</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>מה נסרק</h2>
+      <ul>
+        <li>פורטים פתוחים וגישה מרחוק בלי בקרה</li>
+        <li>סיסמאות ברירת מחדל</li>
+        <li>פרוטוקולים בלי הצפנה (Modbus / MQTT וכדומה)</li>
+        <li>גרסת קושחה חשופה / ישנה</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>איך זה עובד</h2>
+      <ol class="steps">
+        <li><b>צ׳קליסט + הרשמה</b> — מתחילים מהבדיקות הבסיסיות</li>
+        <li><b>הרשאה כתובה</b> — ורק אז סריקה על מערכת חיה</li>
+        <li><b>דוח + תוכנית הקשחה</b> — ממצאים בעברית לשבוע–שבועיים</li>
+      </ol>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      יעקב דרורי · ניסיון באמבדד, IoT ובקרים<br />
+      <a href="https://yacovdroridev.github.io/drori-systems/">תיק עבודות</a>
+      · <a href="mailto:yacov@drori.org">yacov@drori.org</a>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var form = document.getElementById('lead');
+    var ok = document.getElementById('ok');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = (form.name.value || '').trim();
+      var email = (form.email.value || '').trim();
+      var consent = form.consent.checked;
+      var btn = form.querySelector('button.cta');
+      if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        form.email.focus();
+        return;
+      }
+      if (!consent) {
+        form.consent.focus();
+        return;
+      }
+      if (btn) { btn.disabled = true; btn.textContent = 'שולח…'; }
+      var payload = {
+        name: name,
+        email: email,
+        consent: 'yes',
+        source: 'embedded-hardening-checklist',
+        _subject: 'ליד חדש — סריקה והקשחה לבקרים מחוברים',
+        _template: 'table',
+        _replyto: email
+      };
+      fetch('https://formsubmit.co/ajax/yacov@drori.org', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(function () {}).finally(function () {
+        form.style.display = 'none';
+        ok.classList.add('show');
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
